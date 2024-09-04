@@ -8,8 +8,14 @@ import com.dogukan.contactmessage.mapper.ContactMessageMapper;
 import com.dogukan.contactmessage.repository.ContactMessageRepository;
 import com.dogukan.payload.response.ResponseMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +33,14 @@ public class ContactMessageService {
                 .message("Contact Message Created Successfully")
                 .httpStatus(HttpStatus.CREATED)//201
                 .object(createContactMessage.contactMessageToResponse(savedData)).build();
+    }
+
+    public Page<ContactMessageResponse> getAll(int page, int size, String sort, String type) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort).ascending());
+
+        if (Objects.equals(type, "desc")) {
+            pageable = PageRequest.of(page, size, Sort.by(sort).descending());
+        }
+        return contactMessageRepository.findAll(pageable).map(createContactMessage::contactMessageToResponse);
     }
 }
