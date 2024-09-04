@@ -36,4 +36,27 @@ public class ContactMessageController {
         return contactMessageService.getAll(page, size, sort, type);
     }
 
+    @GetMapping("/searchByEmail")// http://localhost:8080/contactMessages/searchByEmail?email
+    public Page<ContactMessageResponse> searchByEmail(
+            @RequestParam(value = "email") String email,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            @RequestParam(value = "sort", defaultValue = "dateTime") String sort,
+            @RequestParam(value = "type", defaultValue = "desc") String type
+    ) {
+        return contactMessageService.searchByEmail(email, page, size, sort, type);
+    }
+
+    // Not: *************************************** searchBySubject ***************************************
+
+    // Not: ODEVVV    searchByDateBetween ***************************************
+
+    // Not: *********************************** deleteByIdParam ***************************************
+
+    // Not: ***************************************** deleteById ***************************************
+
+    // Not: *********************************** getByIdWithParam ***************************************
+
+    // Not: ************************************ getByIdWithPath ***************************************
+
 }
