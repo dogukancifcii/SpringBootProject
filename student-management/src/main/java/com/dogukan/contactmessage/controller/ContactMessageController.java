@@ -36,7 +36,7 @@ public class ContactMessageController {
         return contactMessageService.getAll(page, size, sort, type);
     }
 
-    @GetMapping("/searchByEmail")// http://localhost:8080/contactMessages/searchByEmail?email
+    @GetMapping("/searchByEmail")// http://localhost:8080/contactMessages/searchByEmail?email=aaa@bbb.com
     public Page<ContactMessageResponse> searchByEmail(
             @RequestParam(value = "email") String email,
             @RequestParam(value = "page", defaultValue = "0") int page,
@@ -49,11 +49,32 @@ public class ContactMessageController {
 
     // Not: *************************************** searchBySubject ***************************************
 
+    @GetMapping("/searchBySubject") //http://localhost:8080/contactMessages/searchByEmail?subject=
+    public Page<ContactMessageResponse> searchBySubject(
+            @RequestParam(value = "subject") String subject,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            @RequestParam(value = "sort", defaultValue = "dateTime") String sort,
+            @RequestParam(value = "type", defaultValue = "desc") String type
+    ) {
+        return contactMessageService.searchBySubject(subject, page, size, sort, type);
+    }
+
+
     // Not: ODEVVV    searchByDateBetween ***************************************
+
 
     // Not: *********************************** deleteByIdParam ***************************************
 
+    @DeleteMapping("/deleteByIdParam")//http://localhost:8080/contactMessages/deleteByIdParam?id=1
+    public ResponseMessage<ContactMessageResponse> deleteByIdParam(@RequestParam(value = "id") Long id) {
+        return contactMessageService.deleteByIdParam(id);
+    }
+
+
     // Not: ***************************************** deleteById ***************************************
+
+
 
     // Not: *********************************** getByIdWithParam ***************************************
 

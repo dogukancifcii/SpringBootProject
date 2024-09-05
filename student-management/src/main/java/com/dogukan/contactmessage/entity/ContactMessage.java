@@ -25,6 +25,7 @@ public class ContactMessage {
     private String name;
 
     @NotNull
+    //@Email kismini DTO kisminda yazdik.
     private String email; //aaa@bb.com
 
     @NotNull
@@ -33,6 +34,6 @@ public class ContactMessage {
     @NotNull
     private String message;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd HH:mm",timezone = "US")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "US")
     private LocalDateTime dateTime;
 }

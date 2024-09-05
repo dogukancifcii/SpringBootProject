@@ -25,7 +25,8 @@ public class ContactMessageMapper { //bu classin amaci DTO to POJO veya POJO to 
         return ContactMessageResponse.builder()
                 .name(contactMessage.getName())
                 .subject(contactMessage.getSubject())
-                .message(contactMessage.getEmail())
+                .message(contactMessage.getMessage())
+                .email(contactMessage.getEmail())
                 .dateTime(LocalDateTime.now())
                 .build();
     }
