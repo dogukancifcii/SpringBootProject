@@ -3,12 +3,10 @@ package com.dogukan.contactmessage.controller;
 
 import com.dogukan.contactmessage.dto.ContactMessageRequest;
 import com.dogukan.contactmessage.dto.ContactMessageResponse;
-import com.dogukan.contactmessage.entity.ContactMessage;
 import com.dogukan.contactmessage.service.ContactMessageService;
 import com.dogukan.payload.response.ResponseMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -68,16 +66,28 @@ public class ContactMessageController {
 
     @DeleteMapping("/deleteByIdParam")//http://localhost:8080/contactMessages/deleteByIdParam?id=1
     public ResponseMessage<ContactMessageResponse> deleteByIdParam(@RequestParam(value = "id") Long id) {
-        return contactMessageService.deleteByIdParam(id);
+        return contactMessageService.deleteById(id);
     }
 
 
-    // Not: ***************************************** deleteById ***************************************
-
-
+    // Not: ***************************************** deleteById *************************************** //path
+    @DeleteMapping("/deleteById/{id}")//http://localhost:8080/contactMessages/deleteById/1
+    public ResponseMessage<ContactMessageResponse> deleteById(@PathVariable("id") Long id) {
+        return contactMessageService.deleteById(id);
+    }
 
     // Not: *********************************** getByIdWithParam ***************************************
+    @GetMapping("/getByIdWithParam")//http://localhost:8080/contactMessages/getByIdWithParam?id
+    public ResponseMessage<ContactMessageResponse> getByIdWithParam(@RequestParam(value = "id") Long id) {
+
+        return contactMessageService.getById(id);
+    }
+
 
     // Not: ************************************ getByIdWithPath ***************************************
+    @GetMapping("/getByIdWithParam/{id}")
+    public ResponseMessage<ContactMessageResponse> getByIdWithPath(@PathVariable("id") Long id) {
 
+        return contactMessageService.getById(id);
+    }
 }

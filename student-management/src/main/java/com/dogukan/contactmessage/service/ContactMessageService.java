@@ -67,9 +67,9 @@ public class ContactMessageService {
         return contactMessageRepository.findBySubjectEquals(subject, pageable).map(createContactMessage::contactMessageToResponse);
     }
 
-    public ResponseMessage<ContactMessageResponse> deleteByIdParam(Long id) {
+    public ResponseMessage<ContactMessageResponse> deleteById(Long id) {
         ContactMessage contactMessage = contactMessageRepository.findById(id).
-                orElseThrow(() -> new ResourceNotFoundException("Contact Message is not found by id" + id));
+                orElseThrow(() -> new ResourceNotFoundException("Contact Message is not found by id " + id));
 
         contactMessageRepository.delete(contactMessage);
         return ResponseMessage.<ContactMessageResponse>builder()
@@ -77,5 +77,17 @@ public class ContactMessageService {
                 .httpStatus(HttpStatus.OK)
                 .object(createContactMessage.contactMessageToResponse(contactMessage))
                 .build();
+    }
+
+    public ResponseMessage<ContactMessageResponse> getById(Long id) {
+
+        ContactMessage contactMessage = contactMessageRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contact Message is not found by id" + id));
+
+        return ResponseMessage.<ContactMessageResponse>builder()
+                .message("Contact Message brought successfully..!")
+                .httpStatus(HttpStatus.OK)
+                .object(createContactMessage.contactMessageToResponse(contactMessage))
+                .build();
+
     }
 }
