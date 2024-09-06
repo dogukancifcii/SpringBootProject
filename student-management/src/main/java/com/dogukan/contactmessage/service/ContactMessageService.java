@@ -16,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Service
@@ -28,6 +29,9 @@ public class ContactMessageService {
 
     public ResponseMessage<ContactMessageResponse> save(ContactMessageRequest contactMessageRequest) {
         ContactMessage contactMessage = createContactMessage.requestToContactMessage(contactMessageRequest); //DTO to POJO
+        if (contactMessageRepository.existsByEmail(contactMessage.getEmail())) { //burada email kontrolu yaptik
+            throw new IllegalArgumentException("This email adress already in use");
+        }
         ContactMessage savedData = contactMessageRepository.save(contactMessage);
 
         return ResponseMessage.<ContactMessageResponse>builder() //burada builder ile nesne olusturmus olduk.yani new yerine kullandık
@@ -88,6 +92,16 @@ public class ContactMessageService {
                 .httpStatus(HttpStatus.OK)
                 .object(createContactMessage.contactMessageToResponse(contactMessage))
                 .build();
+
+    }
+
+    public Page<ContactMessageResponse> searchByDateBetween(LocalDateTime startDate, LocalDateTime endDate, int page, int size, String sort, String type) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sort).ascending());
+        if (Objects.equals(type, "desc")) {
+            pageable = PageRequest.of(page, size, Sort.by(sort).descending());
+        }
+
+        return contactMessageRepository.findByDateTimeBetween(startDate, endDate, pageable).map(createContactMessage::contactMessageToResponse);
 
     }
 }

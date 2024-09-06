@@ -1,55 +1,551 @@
-"2024-09-05 20:33:29,441 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 19316 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
-""2024-09-05 20:33:29,448 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
-""2024-09-05 20:33:30,093 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-""2024-09-05 20:33:30,154 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interfaces.
-""2024-09-05 20:33:30,745 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
-""2024-09-05 20:33:30,756 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
-""2024-09-05 20:33:30,757 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
-""2024-09-05 20:33:30,862 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
-""2024-09-05 20:33:30,862 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1369 ms
-""2024-09-05 20:33:31,060 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
-""2024-09-05 20:33:31,131 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
-""2024-09-05 20:33:31,302 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-""2024-09-05 20:33:31,405 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
-""2024-09-05 20:33:31,591 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
-""2024-09-05 20:33:31,610 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
-""2024-09-05 20:33:32,265 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-""2024-09-05 20:33:32,271 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
-""2024-09-05 20:33:32,645 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-""2024-09-05 20:33:32,998 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
-""2024-09-05 20:33:33,006 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.991 seconds (JVM running for 4.406)
-""2024-09-05 20:35:05,971 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
-""2024-09-05 20:35:05,974 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
-""2024-09-05 20:35:05,976 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
-""2024-09-05 23:40:30,315 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 31936 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
-""2024-09-05 23:40:30,317 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
-""2024-09-05 23:40:30,900 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-""2024-09-05 23:40:30,954 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
-""2024-09-05 23:40:31,499 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
-""2024-09-05 23:40:31,509 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
-""2024-09-05 23:40:31,510 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
-""2024-09-05 23:40:31,605 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
-""2024-09-05 23:40:31,606 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1251 ms
-""2024-09-05 23:40:31,742 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
-""2024-09-05 23:40:31,801 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
-""2024-09-05 23:40:31,948 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-""2024-09-05 23:40:32,035 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
-""2024-09-05 23:40:32,180 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
-""2024-09-05 23:40:32,195 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
-""2024-09-05 23:40:32,715 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-""2024-09-05 23:40:32,722 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
-""2024-09-05 23:40:33,046 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-""2024-09-05 23:40:33,346 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
-""2024-09-05 23:40:33,355 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.428 seconds (JVM running for 3.797)
-""2024-09-05 23:40:39,620 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
-""2024-09-05 23:42:37,876 WARN  [http-nio-8080-exec-9] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'email' for method parameter type String is not present]
-""2024-09-05 23:44:07,737 WARN  [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-""2024-09-05 23:44:28,976 ERROR [http-nio-8080-exec-7] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.dogukan.exception.ResourceNotFoundException: Contact Message is not found by id 1] with root cause
-"com.dogukan.exception.ResourceNotFoundException: Contact Message is not found by id 1
-	at com.dogukan.contactmessage.service.ContactMessageService.lambda$deleteById$0(ContactMessageService.java:72)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
-	at com.dogukan.contactmessage.service.ContactMessageService.deleteById(ContactMessageService.java:72)
-	at com.dogukan.contactmessage.controller.ContactMessageController.deleteById(ContactMessageController.java:76)
+"2024-09-06 16:00:16,411 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 26324 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:00:16,416 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:00:17,064 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:00:17,122 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:00:17,719 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:00:17,729 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:00:17,730 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:00:17,830 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:00:17,832 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1374 ms
+""2024-09-06 16:00:17,988 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:00:18,056 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:00:18,248 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:00:18,362 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:00:18,554 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:00:18,572 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:00:19,183 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:00:19,189 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:00:19,472 WARN  [main] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext:Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contactMessageController' defined in file [C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes\com\dogukan\contactmessage\controller\ContactMessageController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contactMessageService' defined in file [C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes\com\dogukan\contactmessage\service\ContactMessageService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'contactMessageRepository' defined in com.dogukan.contactmessage.repository.ContactMessageRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable); Reason: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'
+""2024-09-06 16:00:19,472 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:00:19,475 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:00:19,478 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:00:19,482 INFO  [main] org.apache.catalina.core.StandardService:Stopping service [Tomcat]
+""2024-09-06 16:00:19,496 INFO  [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener:
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+""2024-09-06 16:00:19,519 ERROR [main] org.springframework.boot.SpringApplication:Application run failed
+"org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contactMessageController' defined in file [C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes\com\dogukan\contactmessage\controller\ContactMessageController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contactMessageService' defined in file [C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes\com\dogukan\contactmessage\service\ContactMessageService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'contactMessageRepository' defined in com.dogukan.contactmessage.repository.ContactMessageRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable); Reason: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.dogukan.StudentManagementApplication.main(StudentManagementApplication.java:10)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contactMessageService' defined in file [C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes\com\dogukan\contactmessage\service\ContactMessageService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'contactMessageRepository' defined in com.dogukan.contactmessage.repository.ContactMessageRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable); Reason: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'contactMessageRepository' defined in com.dogukan.contactmessage.repository.ContactMessageRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable); Reason: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 33 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable); Reason: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:107)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$mapMethodsToQuery$1(QueryExecutorMethodInterceptor.java:95)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Collections$UnmodifiableCollection$1.forEachRemaining(Collections.java:1061)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:97)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:87)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:87)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:365)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:323)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:231)
+	at org.springframework.data.util.Lazy.get(Lazy.java:115)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:329)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:144)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 44 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract org.springframework.data.domain.Page com.dogukan.contactmessage.repository.ContactMessageRepository.findByStartDateBetween(java.time.LocalDateTime,java.time.LocalDateTime,org.springframework.data.domain.Pageable)! No property 'startDate' found for type 'ContactMessage'
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:96)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:119)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:259)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:93)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:103)
+	... 66 common frames omitted
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'startDate' found for type 'ContactMessage'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:91)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:438)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:414)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:367)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:349)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:332)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:250)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:251)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:384)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:385)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:96)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:89)
+	... 70 common frames omitted
+"2024-09-06 16:04:20,679 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 15900 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:04:20,680 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:04:21,276 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:04:21,334 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:04:21,882 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:04:21,896 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:04:21,896 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:04:21,992 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:04:21,992 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1275 ms
+""2024-09-06 16:04:22,131 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:04:22,184 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:04:22,319 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:04:22,414 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:04:22,558 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:04:22,572 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:04:23,095 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:04:23,101 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:04:23,439 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:04:23,773 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:04:23,784 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.467 seconds (JVM running for 3.785)
+""2024-09-06 16:14:37,026 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:14:37,147 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dogukan.payload.response.ResponseMessage<com.dogukan.contactmessage.dto.ContactMessageResponse> com.dogukan.contactmessage.controller.ContactMessageController.saveContact(com.dogukan.contactmessage.dto.ContactMessageRequest) with 2 errors: [Field error in object 'contactMessageRequest' on field 'message': rejected value [I have a question regarding your services and pricing.]; codes [Size.contactMessageRequest.message,Size.message,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [contactMessageRequest.message,message]; arguments []; default message [message],16,3]; default message [Your message should be at least 3 chars]] [Field error in object 'contactMessageRequest' on field 'subject': rejected value [Inquiry about services]; codes [Size.contactMessageRequest.subject,Size.subject,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [contactMessageRequest.subject,subject]; arguments []; default message [subject],16,3]; default message [Your subject should be at least 3 chars]] ]
+""2024-09-06 16:15:00,709 WARN  [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dogukan.payload.response.ResponseMessage<com.dogukan.contactmessage.dto.ContactMessageResponse> com.dogukan.contactmessage.controller.ContactMessageController.saveContact(com.dogukan.contactmessage.dto.ContactMessageRequest): [Field error in object 'contactMessageRequest' on field 'message': rejected value [I have a question regarding your services and pricing.]; codes [Size.contactMessageRequest.message,Size.message,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [contactMessageRequest.message,message]; arguments []; default message [message],16,3]; default message [Your message should be at least 3 chars]] ]
+""2024-09-06 16:15:10,668 WARN  [http-nio-8080-exec-7] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dogukan.payload.response.ResponseMessage<com.dogukan.contactmessage.dto.ContactMessageResponse> com.dogukan.contactmessage.controller.ContactMessageController.saveContact(com.dogukan.contactmessage.dto.ContactMessageRequest): [Field error in object 'contactMessageRequest' on field 'message': rejected value [I have a question regarding]; codes [Size.contactMessageRequest.message,Size.message,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [contactMessageRequest.message,message]; arguments []; default message [message],16,3]; default message [Your message should be at least 3 chars]] ]
+""2024-09-06 16:15:30,002 WARN  [http-nio-8080-exec-8] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dogukan.payload.response.ResponseMessage<com.dogukan.contactmessage.dto.ContactMessageResponse> com.dogukan.contactmessage.controller.ContactMessageController.saveContact(com.dogukan.contactmessage.dto.ContactMessageRequest): [Field error in object 'contactMessageRequest' on field 'message': rejected value [I have a question]; codes [Size.contactMessageRequest.message,Size.message,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [contactMessageRequest.message,message]; arguments []; default message [message],16,3]; default message [Your message should be at least 3 chars]] ]
+""2024-09-06 16:15:41,185 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:15:41,186 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:15:41,188 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:15:48,027 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 22160 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:15:48,029 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:15:48,581 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:15:48,651 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 62 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:15:49,192 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:15:49,202 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:15:49,202 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:15:51,106 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:15:51,107 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 3040 ms
+""2024-09-06 16:15:51,232 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:15:51,272 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:15:51,405 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:15:51,499 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:15:51,650 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:15:51,663 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:15:52,184 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:15:52,190 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:15:52,556 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:15:52,928 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:15:52,937 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 5.268 seconds (JVM running for 5.583)
+""2024-09-06 16:15:57,320 INFO  [http-nio-8080-exec-3] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:16:46,482 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dogukan.payload.response.ResponseMessage<com.dogukan.contactmessage.dto.ContactMessageResponse> com.dogukan.contactmessage.controller.ContactMessageController.saveContact(com.dogukan.contactmessage.dto.ContactMessageRequest): [Field error in object 'contactMessageRequest' on field 'message': rejected value [I ]; codes [Size.contactMessageRequest.message,Size.message,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [contactMessageRequest.message,message]; arguments []; default message [message],50,3]; default message [Your message should be at least 3 chars]] ]
+""2024-09-06 16:23:40,693 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:23:40,694 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:23:40,697 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:23:56,893 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 31076 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:23:56,896 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:23:57,552 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:23:57,614 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 54 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:23:58,182 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:23:58,193 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:23:58,193 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:23:58,290 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:23:58,290 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1345 ms
+""2024-09-06 16:23:58,438 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:23:58,482 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:23:58,631 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:23:58,718 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:23:58,961 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:23:58,975 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:23:59,500 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:23:59,508 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:23:59,863 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:24:00,256 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:24:00,266 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.746 seconds (JVM running for 4.049)
+""2024-09-06 16:24:11,015 INFO  [http-nio-8080-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:24:21,813 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:24:21,814 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:24:21,816 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:24:32,231 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 14784 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:24:32,234 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:24:32,795 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:24:32,851 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:24:33,383 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:24:33,397 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:24:33,397 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:24:33,492 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:24:33,493 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1219 ms
+""2024-09-06 16:24:33,657 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:24:33,715 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:24:33,867 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:24:33,960 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:24:34,111 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:24:34,125 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:24:34,676 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:24:34,682 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:24:35,036 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:24:35,371 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:24:35,379 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.519 seconds (JVM running for 3.82)
+""2024-09-06 16:24:37,518 INFO  [http-nio-8080-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:32:54,409 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type LocalDateTime is not present]
+""2024-09-06 16:33:23,663 WARN  [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type LocalDateTime is not present]
+""2024-09-06 16:34:01,976 WARN  [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type LocalDateTime is not present]
+""2024-09-06 16:35:14,093 WARN  [http-nio-8080-exec-6] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type LocalDateTime is not present]
+""2024-09-06 16:35:22,700 WARN  [http-nio-8080-exec-8] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type LocalDateTime is not present]
+""2024-09-06 16:35:29,481 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type LocalDateTime is not present]
+""2024-09-06 16:36:30,196 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:36:30,197 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:36:30,200 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:36:36,326 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 9744 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:36:36,328 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:36:36,881 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:36:36,931 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:36:37,446 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:36:37,455 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:36:37,455 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:36:37,542 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:36:37,542 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1177 ms
+""2024-09-06 16:36:37,689 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:36:37,736 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:36:37,880 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:36:37,974 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:36:38,120 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:36:38,135 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:36:38,679 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:36:38,685 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:36:39,011 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:36:39,384 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:36:39,391 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.456 seconds (JVM running for 3.779)
+""2024-09-06 16:36:41,167 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:36:41,191 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type LocalDateTime is not present]
+""2024-09-06 16:38:14,573 WARN  [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type LocalDateTime is not present]
+""2024-09-06 16:40:14,297 WARN  [http-nio-8080-exec-6] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam @org.springframework.format.annotation.DateTimeFormat java.time.LocalDateTime] for value '2024-09-06T16:17:29'; nested exception is java.lang.IllegalArgumentException: Parse attempt failed for value [2024-09-06T16:17:29]]
+""2024-09-06 16:40:51,724 WARN  [http-nio-8080-exec-8] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam @org.springframework.format.annotation.DateTimeFormat java.time.LocalDateTime] for value '2024-09-06 16:30'; nested exception is java.lang.IllegalArgumentException: Parse attempt failed for value [2024-09-06 16:30]]
+""2024-09-06 16:40:58,355 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:40:58,356 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:40:58,358 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:41:12,221 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 31268 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:41:12,223 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:41:12,767 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:41:12,818 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:41:13,315 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:41:13,326 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:41:13,326 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:41:13,415 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:41:13,416 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1156 ms
+""2024-09-06 16:41:13,550 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:41:13,591 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:41:13,742 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:41:13,833 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:41:13,976 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:41:13,990 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:41:14,504 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:41:14,510 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:41:14,840 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:41:15,182 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:41:15,193 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.332 seconds (JVM running for 3.63)
+""2024-09-06 16:41:23,503 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:41:23,539 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam @org.springframework.format.annotation.DateTimeFormat java.time.LocalDateTime] for value '2024-09-06 16:30'; nested exception is java.lang.IllegalArgumentException: Parse attempt failed for value [2024-09-06 16:30]]
+""2024-09-06 16:41:46,196 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:41:46,198 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:41:46,201 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:41:54,593 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 17832 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:41:54,595 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:41:55,163 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:41:55,218 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:41:55,739 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:41:55,750 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:41:55,750 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:41:55,840 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:41:55,840 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1208 ms
+""2024-09-06 16:41:55,982 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:41:56,025 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:41:56,163 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:41:56,260 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:41:56,516 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:41:56,529 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:41:57,042 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:41:57,048 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:41:57,387 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:41:57,767 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:41:57,777 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.549 seconds (JVM running for 3.851)
+""2024-09-06 16:41:59,638 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:41:59,667 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam @org.springframework.format.annotation.DateTimeFormat java.time.LocalDateTime] for value '2024-09-06 16:30'; nested exception is java.lang.IllegalArgumentException: Parse attempt failed for value [2024-09-06 16:30]]
+""2024-09-06 16:42:41,508 WARN  [http-nio-8080-exec-5] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam @org.springframework.format.annotation.DateTimeFormat java.time.LocalDateTime] for value '2024-09-0616:17:29'; nested exception is java.lang.IllegalArgumentException: Parse attempt failed for value [2024-09-0616:17:29]]
+""2024-09-06 16:44:02,438 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.RequestParam @org.springframework.format.annotation.DateTimeFormat java.time.LocalDateTime] for value '2024-09-06T16:4537'; nested exception is java.lang.IllegalArgumentException: Parse attempt failed for value [2024-09-06T16:4537]]
+""2024-09-06 16:52:01,959 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:52:01,961 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:52:01,963 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:52:20,122 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 22988 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:52:20,126 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:52:20,685 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:52:20,741 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 47 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:52:21,283 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:52:21,293 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:52:21,294 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:52:21,382 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:52:21,383 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1214 ms
+""2024-09-06 16:52:21,538 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:52:21,586 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:52:21,727 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:52:21,829 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:52:21,972 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:52:21,986 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:52:22,510 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:52:22,516 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:52:22,848 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:52:23,191 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:52:23,200 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.439 seconds (JVM running for 3.735)
+""2024-09-06 16:52:25,942 INFO  [http-nio-8080-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:52:35,621 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:52:35,622 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:52:35,625 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:52:48,687 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 8696 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:52:48,689 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:52:49,226 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:52:49,277 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 44 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:52:49,801 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:52:49,812 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:52:49,812 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:52:49,908 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:52:49,908 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1184 ms
+""2024-09-06 16:52:50,064 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:52:50,122 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:52:50,264 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:52:50,362 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:52:50,516 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:52:50,528 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:52:51,053 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:52:51,061 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:52:51,376 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:52:51,730 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:52:51,740 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.417 seconds (JVM running for 3.746)
+""2024-09-06 16:52:54,507 INFO  [http-nio-8080-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 16:53:49,173 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:53:49,174 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 16:53:49,176 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 16:53:58,136 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 19856 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 16:53:58,139 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 16:53:58,712 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 16:53:58,759 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interfaces.
+""2024-09-06 16:53:59,309 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 16:53:59,323 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 16:53:59,323 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 16:53:59,415 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 16:53:59,415 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1240 ms
+""2024-09-06 16:53:59,553 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 16:53:59,597 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 16:53:59,730 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 16:53:59,828 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 16:53:59,975 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 16:53:59,987 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 16:54:00,495 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 16:54:00,501 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 16:54:00,836 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 16:54:01,202 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 16:54:01,212 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.436 seconds (JVM running for 3.746)
+""2024-09-06 16:54:03,940 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 17:04:26,650 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' not supported]
+""2024-09-06 17:05:18,630 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:05:18,632 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 17:05:18,634 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 17:05:30,050 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 15612 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 17:05:30,053 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 17:05:30,642 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 17:05:30,692 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interfaces.
+""2024-09-06 17:05:31,268 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 17:05:31,281 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 17:05:31,281 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 17:05:31,386 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 17:05:31,387 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1291 ms
+""2024-09-06 17:05:31,543 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 17:05:31,592 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 17:05:31,742 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 17:05:31,841 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 17:05:31,999 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 17:05:32,015 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 17:05:32,582 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 17:05:32,588 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:05:32,897 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 17:05:33,261 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 17:05:33,272 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.618 seconds (JVM running for 3.945)
+""2024-09-06 17:05:48,256 INFO  [http-nio-8080-exec-4] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 17:07:47,646 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:07:47,647 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 17:07:47,648 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 17:19:36,256 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 5032 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 17:19:36,258 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 17:19:36,813 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 17:19:36,871 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interfaces.
+""2024-09-06 17:19:37,439 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 17:19:37,451 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 17:19:37,452 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 17:19:37,574 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 17:19:37,574 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1278 ms
+""2024-09-06 17:19:37,728 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 17:19:37,775 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 17:19:37,923 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 17:19:38,015 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 17:19:38,166 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 17:19:38,179 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 17:19:38,743 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 17:19:38,750 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:19:39,134 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 17:19:39,493 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 17:19:39,503 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.605 seconds (JVM running for 3.916)
+""2024-09-06 17:19:48,511 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 17:20:58,097 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:20:58,100 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 17:20:58,101 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 17:21:03,940 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 9676 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 17:21:03,943 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 17:21:04,497 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 17:21:04,548 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
+""2024-09-06 17:21:05,056 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 17:21:05,066 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 17:21:05,066 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 17:21:05,169 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 17:21:05,169 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1188 ms
+""2024-09-06 17:21:05,297 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 17:21:05,341 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 17:21:05,488 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 17:21:05,577 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 17:21:05,723 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 17:21:05,736 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 17:21:06,267 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 17:21:06,273 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:21:06,604 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 17:21:06,987 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 17:21:06,996 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.424 seconds (JVM running for 3.724)
+""2024-09-06 17:21:09,765 INFO  [http-nio-8080-exec-2] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 17:22:13,531 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:22:13,532 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 17:22:13,534 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 17:22:21,051 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 7876 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 17:22:21,054 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 17:22:21,599 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 17:22:21,649 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
+""2024-09-06 17:22:22,195 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 17:22:22,207 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 17:22:22,208 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 17:22:22,301 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 17:22:22,301 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1213 ms
+""2024-09-06 17:22:22,450 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 17:22:22,495 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 17:22:22,639 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 17:22:22,739 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 17:22:22,880 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 17:22:22,894 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 17:22:23,440 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 17:22:23,446 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:22:23,784 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 17:22:24,156 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 17:22:24,165 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.467 seconds (JVM running for 3.779)
+""2024-09-06 17:22:26,711 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 17:26:44,613 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:26:44,615 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 17:26:44,617 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 17:26:53,340 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 20572 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 17:26:53,342 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 17:26:53,904 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 17:26:53,956 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 44 ms. Found 1 JPA repository interfaces.
+""2024-09-06 17:26:54,499 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 17:26:54,510 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 17:26:54,510 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 17:26:54,597 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 17:26:54,597 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1216 ms
+""2024-09-06 17:26:54,754 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 17:26:54,803 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 17:26:54,939 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 17:26:55,034 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 17:26:55,173 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 17:26:55,188 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 17:26:55,709 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 17:26:55,715 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:26:56,038 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 17:26:56,365 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 17:26:56,374 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.395 seconds (JVM running for 3.705)
+""2024-09-06 17:27:06,251 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 17:34:54,276 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:34:54,277 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 17:34:54,279 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 17:36:36,149 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 21432 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 17:36:36,152 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 17:36:36,719 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 17:36:36,778 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interfaces.
+""2024-09-06 17:36:37,309 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 17:36:37,323 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 17:36:37,323 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 17:36:37,416 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 17:36:37,416 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1223 ms
+""2024-09-06 17:36:37,574 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 17:36:37,641 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 17:36:37,777 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 17:36:37,875 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 17:36:38,019 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 17:36:38,032 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 17:36:38,594 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 17:36:38,602 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:36:38,976 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 17:36:39,317 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 17:36:39,327 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.541 seconds (JVM running for 3.855)
+""2024-09-06 17:36:41,452 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 17:36:41,650 ERROR [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: This email adress already in use] with root cause
+"java.lang.IllegalArgumentException: This email adress already in use
+	at com.dogukan.contactmessage.service.ContactMessageService.save(ContactMessageService.java:33)
+	at com.dogukan.contactmessage.controller.ContactMessageController.saveContact(ContactMessageController.java:27)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -63,8 +559,8 @@
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:702)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696)
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
@@ -100,7 +596,85 @@
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:842)
-"2024-09-05 23:49:25,372 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
-""2024-09-05 23:49:25,373 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
-""2024-09-05 23:49:25,375 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+"2024-09-06 17:37:50,738 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:37:50,740 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 17:37:50,742 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 17:37:56,068 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 7000 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 17:37:56,070 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 17:37:56,602 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 17:37:56,665 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interfaces.
+""2024-09-06 17:37:57,178 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 17:37:57,189 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 17:37:57,189 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 17:37:57,278 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 17:37:57,279 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1169 ms
+""2024-09-06 17:37:57,420 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 17:37:57,460 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 17:37:57,597 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 17:37:57,692 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 17:37:57,839 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 17:37:57,855 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 17:37:58,379 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 17:37:58,384 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:37:58,715 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 17:37:59,094 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 17:37:59,105 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 3.405 seconds (JVM running for 3.7)
+""2024-09-06 17:38:03,506 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2024-09-06 17:38:03,727 ERROR [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: This email adress already in use] with root cause
+"java.lang.IllegalArgumentException: This email adress already in use
+	at com.dogukan.contactmessage.service.ContactMessageService.save(ContactMessageService.java:33)
+	at com.dogukan.contactmessage.controller.ContactMessageController.saveContact(ContactMessageController.java:27)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+"2024-09-06 17:39:22,797 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 17:39:22,799 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 17:39:22,800 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
 "

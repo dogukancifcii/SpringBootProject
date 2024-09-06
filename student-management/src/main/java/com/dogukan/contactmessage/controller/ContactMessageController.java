@@ -5,11 +5,14 @@ import com.dogukan.contactmessage.dto.ContactMessageRequest;
 import com.dogukan.contactmessage.dto.ContactMessageResponse;
 import com.dogukan.contactmessage.service.ContactMessageService;
 import com.dogukan.payload.response.ResponseMessage;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/contactMessages")
@@ -20,7 +23,7 @@ public class ContactMessageController {
     private final ContactMessageService contactMessageService;
 
     @PostMapping("/save") // http://localhost:8080/contactMessages/save  + POST
-    public ResponseMessage<ContactMessageResponse> saveContact(@RequestBody @Valid ContactMessageRequest contactMessageRequest) {
+    public ResponseMessage<ContactMessageResponse> saveContact(@Valid @RequestBody ContactMessageRequest contactMessageRequest)  {
         return contactMessageService.save(contactMessageRequest);
     }
 
@@ -47,7 +50,7 @@ public class ContactMessageController {
 
     // Not: *************************************** searchBySubject ***************************************
 
-    @GetMapping("/searchBySubject") //http://localhost:8080/contactMessages/searchByEmail?subject=
+    @GetMapping("/searchBySubject") //http://localhost:8080/contactMessages/searchBySubject?subject=
     public Page<ContactMessageResponse> searchBySubject(
             @RequestParam(value = "subject") String subject,
             @RequestParam(value = "page", defaultValue = "0") int page,
@@ -60,7 +63,17 @@ public class ContactMessageController {
 
 
     // Not: ODEVVV    searchByDateBetween ***************************************
-
+    @GetMapping("/searchByDateBetween")//http://localhost:8080/contactMessages/searchByDateBetween
+    public Page<ContactMessageResponse> searchByDateBetween(
+            @RequestParam(value = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+            @RequestParam(value = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            @RequestParam(value = "sort", defaultValue = "dateTime") String sort,
+            @RequestParam(value = "type", defaultValue = "desc") String type
+    ) {
+        return contactMessageService.searchByDateBetween(startDate, endDate, page, size, sort, type);
+    }
 
     // Not: *********************************** deleteByIdParam ***************************************
 
@@ -85,7 +98,7 @@ public class ContactMessageController {
 
 
     // Not: ************************************ getByIdWithPath ***************************************
-    @GetMapping("/getByIdWithParam/{id}")
+    @GetMapping("/getByIdWithPath/{id}")
     public ResponseMessage<ContactMessageResponse> getByIdWithPath(@PathVariable("id") Long id) {
 
         return contactMessageService.getById(id);

@@ -27,7 +27,7 @@ public class ContactMessageMapper { //bu classin amaci DTO to POJO veya POJO to 
                 .subject(contactMessage.getSubject())
                 .message(contactMessage.getMessage())
                 .email(contactMessage.getEmail())
-                .dateTime(LocalDateTime.now())
+                .dateTime(contactMessage.getDateTime()) //TODO: burasi degisti
                 .build();
     }
 }
