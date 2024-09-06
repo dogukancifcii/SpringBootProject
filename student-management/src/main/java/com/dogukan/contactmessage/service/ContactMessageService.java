@@ -5,9 +5,12 @@ import com.dogukan.contactmessage.dto.ContactMessageRequest;
 import com.dogukan.contactmessage.dto.ContactMessageResponse;
 import com.dogukan.contactmessage.entity.ContactMessage;
 import com.dogukan.contactmessage.mapper.ContactMessageMapper;
+import com.dogukan.contactmessage.messages.Messages;
 import com.dogukan.contactmessage.repository.ContactMessageRepository;
+import com.dogukan.exception.ConflictException;
 import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.response.ResponseMessage;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +19,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -71,7 +77,7 @@ public class ContactMessageService {
         return contactMessageRepository.findBySubjectEquals(subject, pageable).map(createContactMessage::contactMessageToResponse);
     }
 
-    public ResponseMessage<ContactMessageResponse> deleteById(Long id) {
+    /*public ResponseMessage<ContactMessageResponse> deleteById(Long id) {
         ContactMessage contactMessage = contactMessageRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException("Contact Message is not found by id " + id));
 
@@ -81,9 +87,16 @@ public class ContactMessageService {
                 .httpStatus(HttpStatus.OK)
                 .object(createContactMessage.contactMessageToResponse(contactMessage))
                 .build();
+    }*/
+
+    public String deleteById(Long id) {
+        getContactMessageById(id);
+        contactMessageRepository.deleteById(id);
+        return Messages.CONTACT_MESSAGE_DELETED_SUCCESSFULLY;
     }
 
-    public ResponseMessage<ContactMessageResponse> getById(Long id) {
+
+    /*public ResponseMessage<ContactMessageResponse> getById(Long id) {
 
         ContactMessage contactMessage = contactMessageRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contact Message is not found by id" + id));
 
@@ -93,9 +106,17 @@ public class ContactMessageService {
                 .object(createContactMessage.contactMessageToResponse(contactMessage))
                 .build();
 
+    }*/
+
+
+    public ContactMessage getContactMessageById(Long id) {
+        return contactMessageRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException(Messages.NOT_FOUND_MESSAGE));
     }
 
-    public Page<ContactMessageResponse> searchByDateBetween(LocalDateTime startDate, LocalDateTime endDate, int page, int size, String sort, String type) {
+
+
+    /*public Page<ContactMessageResponse> searchByDateBetween(LocalDateTime startDate, LocalDateTime endDate, int page, int size, String sort, String type) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sort).ascending());
         if (Objects.equals(type, "desc")) {
             pageable = PageRequest.of(page, size, Sort.by(sort).descending());
@@ -103,5 +124,16 @@ public class ContactMessageService {
 
         return contactMessageRepository.findByDateTimeBetween(startDate, endDate, pageable).map(createContactMessage::contactMessageToResponse);
 
+    }*/
+
+    public List<ContactMessage> searchByDateBetween(String beginDateString, String endDateString) {
+        try {
+            LocalDate beginDate = LocalDate.parse(beginDateString);
+            LocalDate endDate = LocalDate.parse(endDateString);
+            return contactMessageRepository.findMessagesBetweenDates(beginDate, endDate);
+        } catch (DateTimeParseException e) {
+            throw new ConflictException(Messages.WRONG_DATE_FORMAT);
+        }
     }
+
 }

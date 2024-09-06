@@ -677,4 +677,27 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 "2024-09-06 17:39:22,797 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
 ""2024-09-06 17:39:22,799 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
 ""2024-09-06 17:39:22,800 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+""2024-09-06 19:45:51,660 INFO  [main] com.dogukan.StudentManagementApplication:Starting StudentManagementApplication using Java 17.0.11 on DESKTOP-UFHJBGA with PID 31880 (C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management\target\classes started by dhn19 in C:\Users\dhn19\OneDrive\Masaüstü\YAZILIM\TechProEducation\SpringBootProject\student-management)
+""2024-09-06 19:45:51,663 INFO  [main] com.dogukan.StudentManagementApplication:No active profile set, falling back to 1 default profile: "default"
+""2024-09-06 19:45:52,234 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2024-09-06 19:45:52,301 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 58 ms. Found 1 JPA repository interfaces.
+""2024-09-06 19:45:52,861 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+""2024-09-06 19:45:52,876 INFO  [main] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+""2024-09-06 19:45:52,876 INFO  [main] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.68]
+""2024-09-06 19:45:54,755 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+""2024-09-06 19:45:54,755 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 3054 ms
+""2024-09-06 19:45:54,898 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+""2024-09-06 19:45:54,939 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.12.Final
+""2024-09-06 19:45:55,075 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2024-09-06 19:45:55,171 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+""2024-09-06 19:45:55,328 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+""2024-09-06 19:45:55,343 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL81Dialect
+""2024-09-06 19:45:55,914 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2024-09-06 19:45:55,922 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 19:45:56,438 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2024-09-06 19:45:56,837 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+""2024-09-06 19:45:56,847 INFO  [main] com.dogukan.StudentManagementApplication:Started StudentManagementApplication in 5.554 seconds (JVM running for 5.878)
+""2024-09-06 19:46:01,469 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-09-06 19:46:01,471 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-09-06 19:46:01,473 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
 "
