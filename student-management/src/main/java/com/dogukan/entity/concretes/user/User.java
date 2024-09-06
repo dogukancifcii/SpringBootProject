@@ -1,5 +1,6 @@
 package com.dogukan.entity.concretes.user;
 
+import com.dogukan.entity.concretes.business.StudentInfo;
 import com.dogukan.entity.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -8,6 +9,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -68,5 +70,8 @@ public class User {
     @OneToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private UserRole userRole;
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE) //student da yazsak ayni seyi
+    private List<StudentInfo> studentInfos;
 
 }
