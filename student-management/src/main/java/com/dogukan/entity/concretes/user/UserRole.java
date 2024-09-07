@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserRole { //bu concride classi
+public class UserRole { //bu concrete classı RoleType ve User arasındakı baglantı olarak yaptık bagımlılığı bıraz daha azaltsın dıye
 
 
     @Id

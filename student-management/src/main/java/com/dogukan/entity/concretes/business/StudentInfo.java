@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class StudentInfo {
+public class StudentInfo { //ogrencilerin bilgilerini tutan entity
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +42,7 @@ public class StudentInfo {
 
     @ManyToOne
     private Lesson lesson;
+
+    @OneToOne
+    private EducationTerm educationTerm;
 }

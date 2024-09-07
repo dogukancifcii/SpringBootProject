@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
+//toBuilder = true parametresi, mevcut bir nesnenin bir kopyasını alarak, bu kopya üzerinde değişiklikler yapmanıza olanak tanır.
 
 
 @Entity
@@ -27,10 +28,10 @@ public class User {
     private Long id;
 
     @Column(unique = true)
-    private String username; //userName
+    private String username; //userName yazarsak repositoryde boyle yazmaliyiz
 
     @Column(unique = true)
-    private String ssn;
+    private String ssn; //tcno
 
     private String name;
 
@@ -73,5 +74,4 @@ public class User {
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE) //student da yazsak ayni seyi
     private List<StudentInfo> studentInfos;
-
 }

@@ -112,9 +112,11 @@ public class ContactMessageController {
 
     @DeleteMapping("/deleteById/{contactMessageId}")//http://localhost:8080/contactMessages/deleteById/2
     public ResponseEntity<String> deleteByIdPath(@PathVariable Long contactMessageId) {
-        return ResponseEntity.ok(contactMessageService.deleteById(contactMessageId));
-        // return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        //dogru kullanim yukaridaki kullanim oluyor.
+        //return ResponseEntity.ok(contactMessageService.deleteById(contactMessageId));
+
+        return new ResponseEntity<>(contactMessageService.deleteById(contactMessageId), HttpStatus.NO_CONTENT);
+        //dogru kullanim yukaridaki kullanim oluyor.Yukarıdaki gibi kullanılınca sadece 204 kodu yazıp bodyde bir şey döndürme
+        //demek oluyor.
     }
 
     //buralarda string donmeye gerek yok bizim donmek istedigimiz status kod 204 dondurebiliriz

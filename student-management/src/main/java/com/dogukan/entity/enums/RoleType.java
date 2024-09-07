@@ -8,7 +8,7 @@ public enum RoleType {
     MANAGER("Dean"),
     ASSISTANT_MANAGER("ViceDean");
 
-    public final String name;
+    public final String name;//String degerleri aciklayici olsun diye atamak icin yazilir.
 
     RoleType(String name) {
         this.name = name;
