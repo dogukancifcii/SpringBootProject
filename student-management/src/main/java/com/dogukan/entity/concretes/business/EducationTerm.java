@@ -2,6 +2,7 @@ package com.dogukan.entity.concretes.business;
 
 import com.dogukan.entity.enums.Term;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 
@@ -41,4 +43,8 @@ public class EducationTerm {
     @Column(name = "last_registration_date")
     @NotNull(message = "Last registration date must not be empty")
     private LocalDate lastRegistrationDate;
+
+    @OneToMany(mappedBy = "educationTerm", cascade = CascadeType.ALL)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<LessonProgram> lessonProgram;
 }

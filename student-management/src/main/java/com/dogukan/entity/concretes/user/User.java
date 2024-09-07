@@ -1,5 +1,7 @@
 package com.dogukan.entity.concretes.user;
 
+import com.dogukan.entity.concretes.business.LessonProgram;
+import com.dogukan.entity.concretes.business.Meet;
 import com.dogukan.entity.concretes.business.StudentInfo;
 import com.dogukan.entity.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -10,6 +12,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -74,4 +77,23 @@ public class User {
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE) //student da yazsak ayni seyi
     private List<StudentInfo> studentInfos;
+
+    @JsonIgnore //loopa girmesin diye yazdik
+    @ManyToMany
+    @JoinTable(
+            name = "user_lessonprogram",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "lesson_id")
+    )
+    private Set<LessonProgram> lessonProgramList;
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(
+            name = "meet_",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "meet_id")
+    )
+    //isimler ve ayni sekilde olursa column ve table isimleri bi sıkıntı olmaz ama normalde karşı tarafta JoinTable yaptığımız için birdaha join table yazmamıza gerek yok
+    private List<Meet> meetList;
 }
