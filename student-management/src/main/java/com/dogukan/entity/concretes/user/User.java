@@ -90,7 +90,7 @@ public class User {
     @ManyToMany
     @JsonIgnore
     @JoinTable(
-            name = "meet_",
+            name = "meet_student_table",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "meet_id")
     )

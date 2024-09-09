@@ -44,5 +44,6 @@ public class StudentInfo { //ogrencilerin bilgilerini tutan entity
     private Lesson lesson;
 
     @OneToOne
+    //burasi one to one ve sadece burada yazdik bunun sebebi education term tarafindan sutdentInfoya erismek istemiyorum.
     private EducationTerm educationTerm;
 }

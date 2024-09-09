@@ -13,6 +13,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+/*
+Bu sınıf, Spring Security'nin kimlik doğrulama ve yetkilendirme mekanizmasında kullanıcı bilgilerini ve rollerini taşımak için gereklidir.
+Veritabanından alınan kullanıcı bilgilerini UserDetailsImpl sınıfı kullanarak Spring Security bağlamında kullanıma hazır hale getiririz.
+ */
 public class UserDetailsImpl implements UserDetails {
 
     private Long id;
@@ -28,8 +32,18 @@ public class UserDetailsImpl implements UserDetails {
 
     private String ssn;
 
+    // Kullanıcının sahip olduğu yetkiler (roller) için Collection
+    //rolleri cevirmek icin GrantedAuthority turu
     private Collection<? extends GrantedAuthority> authorities;
 
+    /*
+    GRANTED AUTHORITY:
+    GrantedAuthority Spring Security'de, bir kullanıcının sahip olduğu yetki veya rolü temsil eden bir arayüzdür.
+    Bu arayüz, kullanıcının hangi işlemleri yapmaya veya hangi kaynaklara erişmeye yetkili olduğunu belirlemek için kullanılır.
+     */
+
+
+    // Kullanıcı bilgilerini alarak bir nesne oluşturur ve rollerini (yetkilerini) ayarlar
     public UserDetailsImpl(Long id, String username, String name, Boolean isAdviser, String password, String role, String ssn) {
         this.id = id;
         this.username = username;
@@ -44,32 +58,39 @@ public class UserDetailsImpl implements UserDetails {
     }
 
 
-    @Override
 
+
+    // Kullanıcının sahip olduğu yetkileri döner.Rolü dondurduk
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
 
+    // Kullanıcının parolasını döner
     @Override
     public String getPassword() {
         return password;
     }
 
+    // Kullanıcının kullanıcı adını döner
     @Override
     public String getUsername() {
         return username;
     }
 
+    // Kullanıcının hesabının süresinin dolup dolmadığını belirtir (Bu durumda her zaman aktif)
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    // Kullanıcının hesabının kilitli olup olmadığını belirtir (Bu durumda her zaman kilitsiz)
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    // Kullanıcının kimlik bilgilerinin süresinin dolup dolmadığını belirtir (Bu durumda her zaman geçerli)
     @Override
     public boolean isCredentialsNonExpired() {
         return true;

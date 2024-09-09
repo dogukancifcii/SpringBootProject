@@ -45,6 +45,9 @@ public class EducationTerm {
     private LocalDate lastRegistrationDate;
 
     @OneToMany(mappedBy = "educationTerm", cascade = CascadeType.ALL)
+    //cascade amaci mesela bir educatıon term silersem lessonProgramda silinsin.
+    //yani educatıon termde yaptıgım butun değişiklileri lessonProgrdamdada yansıt demiş oluyoruz.Silme çok
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //yukaridaki kodun yazilmas sebebi ise infinite recursion olmasin diye.Yazabilme yetkisi var fakat geri clientten istek gönderince gozukmesin oluyor.
     private List<LessonProgram> lessonProgram;
 }

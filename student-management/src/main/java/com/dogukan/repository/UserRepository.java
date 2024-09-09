@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    //asagida optional donsek daha iyi bir null kontrolu yapabiliriz.
     User findByUsernameEquals(String username);
 }

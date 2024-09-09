@@ -27,7 +27,8 @@ public class Lesson {
 
     private Boolean isCompulsory; //zorunlu bir ders mi?
 
-    @JsonIgnore
+    @JsonIgnore //bunu sonsuz donguye girmesin diye yazdik.
     @ManyToMany(mappedBy = "lessons", cascade = CascadeType.REMOVE)
+    //cascadeType yazma sebebimiz bir lesson siliniyorsa o lessonun lesson programida silinsin diyoruz.
     private Set<LessonProgram> lessonPrograms;
 }
