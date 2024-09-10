@@ -40,7 +40,7 @@ public class StudentInfo { //ogrencilerin bilgilerini tutan entity
     @JsonIgnore
     private User student;
 
-    @ManyToOne
+    @ManyToOne //her dersin kendine ozel birden fazla student infosu olabilir. ama ayni student info
     private Lesson lesson;
 
     @OneToOne

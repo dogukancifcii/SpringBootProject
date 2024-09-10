@@ -75,7 +75,8 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private UserRole userRole;
 
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE) //student da yazsak ayni seyi
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.REMOVE)
+    // mappedBy student da yazsak ayni seyi
     private List<StudentInfo> studentInfos;
 
     @JsonIgnore //loopa girmesin diye yazdik
