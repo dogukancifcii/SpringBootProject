@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+//securityde kimlik doğrulama hatası aldığımızda istediğimiz türe çevirme islemi yapıyoruz.
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
