@@ -32,7 +32,7 @@ public class JwtUtils {
         //username kullanarak jwt token create ettik
     }
 
-    public String generateTokenFromUsername(String username) {
+    private String generateTokenFromUsername(String username) {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
