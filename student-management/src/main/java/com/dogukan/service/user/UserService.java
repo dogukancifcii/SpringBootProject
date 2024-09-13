@@ -2,6 +2,8 @@ package com.dogukan.service.user;
 
 import com.dogukan.entity.concretes.user.User;
 import com.dogukan.entity.enums.RoleType;
+import com.dogukan.exception.BadRequestException;
+import com.dogukan.exception.ConflictException;
 import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.mappers.UserMapper;
 import com.dogukan.payload.messages.ErrorMessages;
@@ -11,6 +13,7 @@ import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.abstracts.BaseUserResponse;
 import com.dogukan.payload.response.user.UserResponse;
 import com.dogukan.repository.user.UserRepository;
+import com.dogukan.service.helper.MethodHelper;
 import com.dogukan.service.helper.PageableHelper;
 import com.dogukan.service.validator.UniquePropertyValidator;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +23,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 @Service
@@ -32,6 +36,7 @@ public class UserService {
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
     private final PageableHelper pageableHelper;
+    private final MethodHelper methodHelper;
 
     public ResponseMessage<UserResponse> saveUser(UserRequest userRequest, String userRole) {
         //girilen username - ssn - phoneNumber-email unique mi kontrolü
@@ -99,5 +104,33 @@ public class UserService {
                 .httpStatus(HttpStatus.OK)
                 .object(baseUserResponse)
                 .build();
+    }
+
+    // Not : deleteUser() **********************************************************
+    public String deleteUserById(Long id, HttpServletRequest request) {
+        // silinecek user var mi kontrolu
+        User user = methodHelper.isUserExist(id); // silinmesi istenen user
+        // metodu tetikleyen user role bilgisi aliniyor
+        String userName = (String) request.getAttribute("username");
+        User user2 = userRepository.findByUsername(userName); // silme islemini talep eden user
+        // builtIn kontrolu
+        if (Boolean.TRUE.equals(user.getBuilt_in())) { // condition : user.getBuilt_in()
+            throw new ConflictException(ErrorMessages.NOT_PERMITTED_METHOD_MESSAGE);
+            // MANAGER sadece Teacher, student, Assistant_Manager silebilir
+        } else if (user2.getUserRole().getRoleType() == RoleType.MANAGER) {
+            if (!(  (user.getUserRole().getRoleType() == RoleType.TEACHER) ||
+                    (user.getUserRole().getRoleType() == RoleType.STUDENT) ||
+                    (user.getUserRole().getRoleType() == RoleType.ASSISTANT_MANAGER) )) {
+                throw new BadRequestException(ErrorMessages.NOT_PERMITTED_METHOD_MESSAGE);
+            }
+            // Mudur Yardimcisi sadece Teacher veya Student silebilir
+        } else if (user2.getUserRole().getRoleType() == RoleType.ASSISTANT_MANAGER) {
+            if (!((user.getUserRole().getRoleType() == RoleType.TEACHER) ||
+                    (user.getUserRole().getRoleType() == RoleType.STUDENT))) {
+                throw new BadRequestException(ErrorMessages.NOT_PERMITTED_METHOD_MESSAGE);
+            }
+        }
+        userRepository.deleteById(id);
+        return SuccessMessages.USER_DELETE;
     }
 }

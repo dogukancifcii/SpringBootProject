@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
@@ -52,4 +53,25 @@ public class UserController {
     public ResponseMessage<BaseUserResponse> getUserById(@PathVariable Long userId) {
         return userService.getUserById(userId);
     }
+
+    // Not : ODEV deleteUserById() ***************************************************
+
+    @DeleteMapping("/delete/{id}") //http://localhost:8080/user/delete/3
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public ResponseEntity<String> deleteUserById(@PathVariable Long id ,
+                                                 HttpServletRequest httpServletRequest){
+        return ResponseEntity.ok(userService.deleteUserById(id , httpServletRequest));
+    }
+
+
+    // Not: updateAdminOrDeanOrViceDean() ********************************************
+    // !!! Admin --> Dean veya  ViceDEan i guncellerken kullanilacak method
+    // !!! Student ve teacher icin ekstra fieldlar gerekecegi icin, baska endpoint gerekiyor
+
+
+    // Not: updateUserForUser() ******************************************************
+    // !!! Kullanicinin kendisini update etmesini saglayan method
+    // !!! AuthenticationController da updatePassword oldugu icin buradaki DTO da password olmamali
+
+    // Not : getByName() *************************************************************
 }
