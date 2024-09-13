@@ -16,6 +16,7 @@ import com.dogukan.service.validator.UniquePropertyValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -76,11 +77,27 @@ public class UserService {
     }
 
     public ResponseMessage<BaseUserResponse> getUserById(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(()->
+
+        BaseUserResponse baseUserResponse;
+
+        User user = userRepository.findById(userId).orElseThrow(() ->
                 new ResourceNotFoundException(String.format(ErrorMessages.NOT_FOUND_USER_MESSAGE, userId)));
 
         // UserResponse --> Admin , Manager, Assistant_Manager
         // TeacherResponse --> Teacher
         // StudentResponse --> Student
+        if (user.getUserRole().getRoleType() == RoleType.STUDENT) {
+            baseUserResponse = userMapper.mapUserToStudentResponse(user);
+        } else if (user.getUserRole().getRoleType() == RoleType.TEACHER) {
+            baseUserResponse = userMapper.mapUserToTeacherResponse(user);
+        } else {
+            baseUserResponse = userMapper.mapUserToUserResponse(user);
+        }
+
+        return ResponseMessage.<BaseUserResponse>builder()
+                .message(SuccessMessages.USER_FOUND)
+                .httpStatus(HttpStatus.OK)
+                .object(baseUserResponse)
+                .build();
     }
 }
