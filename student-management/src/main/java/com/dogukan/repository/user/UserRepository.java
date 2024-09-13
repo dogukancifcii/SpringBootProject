@@ -1,6 +1,7 @@
 package com.dogukan.repository.user;
 
 import com.dogukan.entity.concretes.user.User;
+import com.dogukan.entity.enums.RoleType;
 import com.dogukan.payload.response.user.UserResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,4 +31,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String userName);
 
     List<User> getUserByNameContaining(String name);
+
+    @Query("select count(u) from User u where u.userRole.roleType= ?1")
+    long countAdmin(RoleType roleType);
 }
