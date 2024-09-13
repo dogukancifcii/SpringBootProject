@@ -37,4 +37,12 @@ public class TeacherController {
         return teacherService.getAllStudentByAdvisorUsername(userName);
 
     }
+
+    // Not: ODEVVV updateTeacherById() ***************************************************
+
+    // Not: ODEVV SaveAdvisorTeacherByTeacherId() ****************************************
+
+    // Not : ODEVV  deleteAdvisorTeacherById() *******************************************
+
+    // Not :  getAllAdvisorTeacher() *****************************************************
 }
