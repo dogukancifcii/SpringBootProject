@@ -2,7 +2,7 @@ package com.dogukan.security.service;
 
 
 import com.dogukan.entity.concretes.user.User;
-import com.dogukan.repository.UserRepository;
+import com.dogukan.repository.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

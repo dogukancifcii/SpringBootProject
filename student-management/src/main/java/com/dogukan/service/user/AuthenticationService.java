@@ -6,7 +6,7 @@ import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.request.LoginRequest;
 import com.dogukan.payload.request.UpdatePasswordRequest;
 import com.dogukan.payload.response.authentication.AuthResponse;
-import com.dogukan.repository.UserRepository;
+import com.dogukan.repository.user.UserRepository;
 import com.dogukan.security.jwt.JwtUtils;
 import com.dogukan.security.service.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;

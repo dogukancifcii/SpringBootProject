@@ -43,6 +43,8 @@ public class User {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthDay;
 
+    private String birthPlace;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //kaydet ve client kismina geri dondurme demek
     //@JsonIgnore()  buda yukaridaki ile ayni isi yapar
     private String password;

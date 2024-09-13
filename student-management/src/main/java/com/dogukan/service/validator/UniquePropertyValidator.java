@@ -3,7 +3,7 @@ package com.dogukan.service.validator;
 
 import com.dogukan.exception.ConflictException;
 import com.dogukan.payload.messages.ErrorMessages;
-import com.dogukan.repository.UserRepository;
+import com.dogukan.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
