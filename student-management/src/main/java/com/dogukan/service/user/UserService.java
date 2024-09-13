@@ -14,6 +14,6 @@ public class UserService {
     private final UserRepository userRepository;
 
     public ResponseMessage<UserResponse> saveUser(UserRequest userRequest, String userRole) {
-        return null;
+        //girilen username - ssn - phoneNumber-email unique mi kontrolü
     }
 }
