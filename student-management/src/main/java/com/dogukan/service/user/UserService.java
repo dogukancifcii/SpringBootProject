@@ -8,6 +8,7 @@ import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.messages.SuccessMessages;
 import com.dogukan.payload.request.user.UserRequest;
 import com.dogukan.payload.response.ResponseMessage;
+import com.dogukan.payload.response.abstracts.BaseUserResponse;
 import com.dogukan.payload.response.user.UserResponse;
 import com.dogukan.repository.user.UserRepository;
 import com.dogukan.service.helper.PageableHelper;
@@ -72,5 +73,14 @@ public class UserService {
         Pageable pageable = pageableHelper.getPageableWithProperties(page, size, sort, type);
 
         return userRepository.findByUserByRole(userRole, pageable).map(userMapper::mapUserToUserResponse);
+    }
+
+    public ResponseMessage<BaseUserResponse> getUserById(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(()->
+                new ResourceNotFoundException(String.format(ErrorMessages.NOT_FOUND_USER_MESSAGE, userId)));
+
+        // UserResponse --> Admin , Manager, Assistant_Manager
+        // TeacherResponse --> Teacher
+        // StudentResponse --> Student
     }
 }

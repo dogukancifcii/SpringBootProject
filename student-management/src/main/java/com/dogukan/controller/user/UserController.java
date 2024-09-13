@@ -2,6 +2,7 @@ package com.dogukan.controller.user;
 
 import com.dogukan.payload.request.user.UserRequest;
 import com.dogukan.payload.response.ResponseMessage;
+import com.dogukan.payload.response.abstracts.BaseUserResponse;
 import com.dogukan.payload.response.user.UserResponse;
 import com.dogukan.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -46,5 +47,9 @@ public class UserController {
     }
 
     // hoca / unutmus
-    @GetMapping("/getUserById/{userId}") //http://localhost:8080/user/
+    @GetMapping("/getUserById/{userId}") //http://localhost:8080/user/getUserById/1 + GET
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER')")
+    public ResponseMessage<BaseUserResponse> getUserById(@PathVariable Long userId) {
+        return userService.getUserById(userId);
+    }
 }

@@ -20,4 +20,6 @@ public class ErrorMessages {
 
     public static final String ROLE_NOT_FOUND = "There is no role like that, check the database";
     public static final String NOT_FOUND_USER_ROLE_MESSAGE = "Error: User not found with user-role : %s";
+
+    public static final String NOT_FOUND_USER_MESSAGE = "Error: user not found with id: %s";
 }
