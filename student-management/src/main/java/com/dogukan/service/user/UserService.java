@@ -9,6 +9,7 @@ import com.dogukan.payload.mappers.UserMapper;
 import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.messages.SuccessMessages;
 import com.dogukan.payload.request.user.UserRequest;
+import com.dogukan.payload.request.user.UserRequestWithoutPassword;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.abstracts.BaseUserResponse;
 import com.dogukan.payload.response.user.UserResponse;
@@ -20,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -118,9 +120,9 @@ public class UserService {
             throw new ConflictException(ErrorMessages.NOT_PERMITTED_METHOD_MESSAGE);
             // MANAGER sadece Teacher, student, Assistant_Manager silebilir
         } else if (user2.getUserRole().getRoleType() == RoleType.MANAGER) {
-            if (!(  (user.getUserRole().getRoleType() == RoleType.TEACHER) ||
+            if (!((user.getUserRole().getRoleType() == RoleType.TEACHER) ||
                     (user.getUserRole().getRoleType() == RoleType.STUDENT) ||
-                    (user.getUserRole().getRoleType() == RoleType.ASSISTANT_MANAGER) )) {
+                    (user.getUserRole().getRoleType() == RoleType.ASSISTANT_MANAGER))) {
                 throw new BadRequestException(ErrorMessages.NOT_PERMITTED_METHOD_MESSAGE);
             }
             // Mudur Yardimcisi sadece Teacher veya Student silebilir
@@ -154,5 +156,33 @@ public class UserService {
                 .httpStatus(HttpStatus.OK)
                 .object(userMapper.mapUserToUserResponse(savedUser))
                 .build();
+    }
+
+    // Not: updateUserForUser() **********************************************************
+    public ResponseEntity<String> updateUserForUsers(UserRequestWithoutPassword userRequest, HttpServletRequest request) {
+        String userName = (String) request.getAttribute("username");
+        User user = userRepository.findByUsername(userName);
+
+        // !!! bulit_in kontrolu
+        methodHelper.checkBuiltIn(user);
+
+        // !!! unique kontrolu
+        uniquePropertyValidator.checkUniqueProperties(user, userRequest);
+        // !!! DTO --> pojo donusumu burada yazildi
+        user.setUsername(userRequest.getUsername());
+        user.setBirthDay(userRequest.getBirthDay());
+        user.setEmail(userRequest.getEmail());
+        user.setPhoneNumber(userRequest.getPhoneNumber());
+        user.setBirthPlace(userRequest.getBirthPlace());
+        user.setGender(userRequest.getGender());
+        user.setName(userRequest.getName());
+        user.setSurname(userRequest.getSurname());
+        user.setSsn(userRequest.getSsn());
+
+        userRepository.save(user);
+
+        String message = SuccessMessages.USER_UPDATE;
+
+        return ResponseEntity.ok(message);
     }
 }

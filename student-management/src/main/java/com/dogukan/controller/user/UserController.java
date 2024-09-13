@@ -1,6 +1,7 @@
 package com.dogukan.controller.user;
 
 import com.dogukan.payload.request.user.UserRequest;
+import com.dogukan.payload.request.user.UserRequestWithoutPassword;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.abstracts.BaseUserResponse;
 import com.dogukan.payload.response.user.UserResponse;
@@ -81,6 +82,12 @@ public class UserController {
     // Not: updateUserForUser() ******************************************************
     // !!! Kullanicinin kendisini update etmesini saglayan method
     // !!! AuthenticationController da updatePassword oldugu icin buradaki DTO da password olmamali
+
+    @PatchMapping("/updateUser")   // http://localhost:8080/user/updateUser
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','TEACHER')")
+    public ResponseEntity<String>updateUser(@RequestBody @Valid UserRequestWithoutPassword userRequestWithoutPassword, HttpServletRequest request){
+        return userService.updateUserForUsers(userRequestWithoutPassword, request);
+    }
 
     // Not : getByName() *************************************************************
 }
