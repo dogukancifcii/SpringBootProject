@@ -2,13 +2,17 @@ package com.dogukan.service.user;
 
 import com.dogukan.entity.concretes.user.User;
 import com.dogukan.entity.enums.RoleType;
+import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.mappers.UserMapper;
+import com.dogukan.payload.messages.ErrorMessages;
+import com.dogukan.payload.messages.SuccessMessages;
 import com.dogukan.payload.request.user.UserRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.user.UserResponse;
 import com.dogukan.repository.user.UserRepository;
 import com.dogukan.service.validator.UniquePropertyValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -20,6 +24,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final UniquePropertyValidator uniquePropertyValidator;
     private final UserMapper userMapper;
+    private final UserRoleService userRoleService;
+    private final PasswordEncoder passwordEncoder;
 
     public ResponseMessage<UserResponse> saveUser(UserRequest userRequest, String userRole) {
         //girilen username - ssn - phoneNumber-email unique mi kontrolü
@@ -37,8 +43,23 @@ public class UserService {
             if (Objects.equals(userRequest.getUsername(), "Admin")) {
                 user.setBuilt_in(true);
             }
-            user.setUserRole();
+            user.setUserRole(userRoleService.getUserRole(RoleType.ADMIN));
+        } else if (userRole.equalsIgnoreCase("Dean")) {
+            user.setUserRole(userRoleService.getUserRole(RoleType.MANAGER));
+        } else if (userRole.equalsIgnoreCase("ViceDean")) {
+            user.setUserRole(userRoleService.getUserRole(RoleType.ASSISTANT_MANAGER));
+        } else {
+            throw new ResourceNotFoundException(String.format(ErrorMessages.NOT_FOUND_USER_ROLE_MESSAGE, userRole));
         }
+        //password encode ediliyor
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //advisor degeri setleniyor(Admin-Manager ve AsstManagerlarin advisro olma ihtimali yok)
+        user.setIsAdvisor(Boolean.FALSE);
 
+        User savedUser = userRepository.save(user);
+        return ResponseMessage.<UserResponse>builder()
+                .message(SuccessMessages.USER_CREATED)
+                .object(userMapper.mapUserToUserResponse(savedUser))
+                .build();
     }
 }
