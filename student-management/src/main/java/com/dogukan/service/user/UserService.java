@@ -26,7 +26,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -184,5 +186,14 @@ public class UserService {
         String message = SuccessMessages.USER_UPDATE;
 
         return ResponseEntity.ok(message);
+    }
+
+    // Not : getByName() ***************************************************************
+    public List<UserResponse> getUserByName(String name) {
+
+        return userRepository.getUserByNameContaining(name)
+                .stream()
+                .map(userMapper::mapUserToUserResponse)
+                .collect(Collectors.toList());
     }
 }

@@ -7,6 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Arrays;
+import java.util.List;
+
 public interface UserRepository extends JpaRepository<User, Long> {
 
     //asagida optional donsek daha iyi bir null kontrolu yapabiliriz.
@@ -25,4 +28,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Page<User> findByUserByRole(String roleName, Pageable pageable);
 
     User findByUsername(String userName);
+
+    List<User> getUserByNameContaining(String name);
 }
