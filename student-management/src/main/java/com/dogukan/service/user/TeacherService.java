@@ -6,12 +6,17 @@ import com.dogukan.payload.mappers.UserMapper;
 import com.dogukan.payload.messages.SuccessMessages;
 import com.dogukan.payload.request.user.TeacherRequest;
 import com.dogukan.payload.response.ResponseMessage;
+import com.dogukan.payload.response.user.StudentResponse;
 import com.dogukan.payload.response.user.TeacherResponse;
 import com.dogukan.repository.user.UserRepository;
+import com.dogukan.service.helper.MethodHelper;
 import com.dogukan.service.validator.UniquePropertyValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +27,7 @@ public class TeacherService {
     private final UserMapper userMapper;
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
+    private final MethodHelper methodHelper;
 
     public ResponseMessage<TeacherResponse> saveTeacher(TeacherRequest teacherRequest) {
         //TODO : LessonProgram eklenecek
@@ -51,4 +57,12 @@ public class TeacherService {
     }
 
 
+    public List<StudentResponse> getAllStudentByAdvisorUsername(String userName) {
+        User teacher = methodHelper.isUserExistByUsername(userName);
+        methodHelper.checkAdvisor(teacher);
+
+        return userRepository.findByAdvisorTeacherId(teacher.getId())
+                .stream()
+                .map(userMapper::mapUserToStudentResponse).collect(Collectors.toList());
+    }
 }
