@@ -133,4 +133,26 @@ public class UserService {
         userRepository.deleteById(id);
         return SuccessMessages.USER_DELETE;
     }
+
+    public ResponseMessage<BaseUserResponse> updateUser(UserRequest userRequest, Long userId) {
+
+        User user = methodHelper.isUserExist(userId);
+        // !!! bulit_in kontrolu
+        methodHelper.checkBuiltIn(user);
+        //!!! update isleminde gelen request de unique olmasi gereken eski datalar hic degismedi ise
+        // dublicate kontrolu yapmaya gerek yok :
+        uniquePropertyValidator.checkUniqueProperties(user, userRequest);
+        //!!! DTO --> POJO
+        User updatedUser = userMapper.mapUserRequestToUpdatedUser(userRequest, userId);
+        // !!! Password Encode
+        updatedUser.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        updatedUser.setUserRole(user.getUserRole());
+        User savedUser = userRepository.save(updatedUser);
+
+        return ResponseMessage.<BaseUserResponse>builder()
+                .message(SuccessMessages.USER_UPDATE_MESSAGE)
+                .httpStatus(HttpStatus.OK)
+                .object(userMapper.mapUserToUserResponse(savedUser))
+                .build();
+    }
 }

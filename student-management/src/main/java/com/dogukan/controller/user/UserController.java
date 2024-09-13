@@ -68,6 +68,15 @@ public class UserController {
     // !!! Admin --> Dean veya  ViceDEan i guncellerken kullanilacak method
     // !!! Student ve teacher icin ekstra fieldlar gerekecegi icin, baska endpoint gerekiyor
 
+    @PutMapping("/update/{userId}") // http://localhost:8080/user/update/1
+    @PreAuthorize("hasAuthority('ADMIN')")
+    //!!! donen deger BaseUserResponse --> polymorphism
+    public ResponseMessage<BaseUserResponse> updateAdminDeanViceDeanForAdmin(
+            @RequestBody @Valid UserRequest userRequest,
+            @PathVariable Long userId){
+        return userService.updateUser(userRequest,userId);
+    }
+
 
     // Not: updateUserForUser() ******************************************************
     // !!! Kullanicinin kendisini update etmesini saglayan method
