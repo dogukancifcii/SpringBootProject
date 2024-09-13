@@ -10,8 +10,11 @@ import com.dogukan.payload.request.user.UserRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.user.UserResponse;
 import com.dogukan.repository.user.UserRepository;
+import com.dogukan.service.helper.PageableHelper;
 import com.dogukan.service.validator.UniquePropertyValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +29,7 @@ public class UserService {
     private final UserMapper userMapper;
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
+    private final PageableHelper pageableHelper;
 
     public ResponseMessage<UserResponse> saveUser(UserRequest userRequest, String userRole) {
         //girilen username - ssn - phoneNumber-email unique mi kontrolü
@@ -61,5 +65,12 @@ public class UserService {
                 .message(SuccessMessages.USER_CREATED)
                 .object(userMapper.mapUserToUserResponse(savedUser))
                 .build();
+    }
+
+    public Page<UserResponse> getUsersByPage(int page, int size, String sort, String type, String userRole) {
+
+        Pageable pageable = pageableHelper.getPageableWithProperties(page, size, sort, type);
+
+        return userRepository.findByUserByRole(userRole, pageable).map(userMapper::mapUserToUserResponse);
     }
 }
