@@ -17,4 +17,6 @@ public class SuccessMessages {
 
     public static final String TEACHER_SAVE = "Teacher is Saved";
     public static final String TEACHER_UPDATE = "Teacher is Updated Successfully";
+
+    public static final String TEACHER_ADVISOR_UPDATED = "Teacher advisor is updated";
 }

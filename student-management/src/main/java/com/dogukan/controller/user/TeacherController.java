@@ -53,6 +53,14 @@ public class TeacherController {
 
     // Not: ODEVV SaveAdvisorTeacherByTeacherId() ****************************************
 
+    @PatchMapping("/advisorUpdate/{teacherId}")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseMessage<TeacherResponse> saveAdvisorTeacherByTeacherId(
+            @PathVariable("teacherId") Long teacherId
+    ) {
+        return teacherService.saveAdvisorTeacherByTeacherId(teacherId);
+    }
+
     // Not : ODEVV  deleteAdvisorTeacherById() *******************************************
 
     // Not :  getAllAdvisorTeacher() *****************************************************

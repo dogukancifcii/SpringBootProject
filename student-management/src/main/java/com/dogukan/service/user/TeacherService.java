@@ -106,4 +106,21 @@ public class TeacherService {
                 .build();
 
     }
+
+    public ResponseMessage<TeacherResponse> saveAdvisorTeacherByTeacherId(Long teacherId) {
+        User teacher = methodHelper.isUserExist(teacherId);
+
+        methodHelper.checkBuiltIn(teacher);
+
+        teacher.setIsAdvisor(Boolean.TRUE);
+
+        User savedTeacher = userRepository.save(teacher);
+
+        return ResponseMessage.<TeacherResponse>builder()
+                .message(SuccessMessages.TEACHER_ADVISOR_UPDATED)
+                .httpStatus(HttpStatus.OK)
+                .object(userMapper.mapUserToTeacherResponse(savedTeacher))
+                .build();
+
+    }
 }
