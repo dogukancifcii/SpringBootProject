@@ -43,7 +43,7 @@ public class TeacherController {
 
     //
     @PutMapping("/update/{teacherId}") //http://localhost:8080/teacher/update/1 + PUT
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<TeacherResponse> updateTeacherById(
             @RequestBody @Valid TeacherRequest teacherRequest,
             @PathVariable("teacherId") Long teacherId
@@ -54,8 +54,8 @@ public class TeacherController {
 
     // Not: ODEVV SaveAdvisorTeacherByTeacherId() ****************************************
 
-    @PatchMapping("/saveAdvisor/{teacherId}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PatchMapping("/saveAdvisorTeacher/{teacherId}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<TeacherResponse> saveAdvisorTeacherByTeacherId(
             @PathVariable("teacherId") Long teacherId
     ) {
@@ -64,8 +64,8 @@ public class TeacherController {
 
     // Not : ODEVV  deleteAdvisorTeacherById() *******************************************
 
-    @PatchMapping("/deleteAdvisor/{teacherId}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PatchMapping("/deleteAdvisorTeacherById/{teacherId}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<TeacherResponse> deleteAdvisorTeacherById(
             @PathVariable("teacherId") Long teacherId
     ) {
