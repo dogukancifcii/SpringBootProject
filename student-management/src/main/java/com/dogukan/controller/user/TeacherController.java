@@ -40,6 +40,17 @@ public class TeacherController {
 
     // Not: ODEVVV updateTeacherById() ***************************************************
 
+    //
+    @PutMapping("/update/{teacherId}") //http://localhost:8080/teacher/update/1 + PUT
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseMessage<TeacherResponse> updateTeacherById(
+            @RequestBody @Valid TeacherRequest teacherRequest,
+            @PathVariable("teacherId") Long teacherId
+    ) {
+        return teacherService.updateTeacherById(teacherRequest, teacherId);
+    }
+
+
     // Not: ODEVV SaveAdvisorTeacherByTeacherId() ****************************************
 
     // Not : ODEVV  deleteAdvisorTeacherById() *******************************************

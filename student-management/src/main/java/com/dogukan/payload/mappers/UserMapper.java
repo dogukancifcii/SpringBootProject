@@ -113,4 +113,22 @@ public class UserMapper {
                 .build();
     }
 
+    public User mapTeacherRequestToUpdatedTeacher(TeacherRequest teacherRequest, Long teacherId) {
+        return User.builder()
+                .id(teacherId)
+                .name(teacherRequest.getName())
+                .surname(teacherRequest.getSurname())
+                .ssn(teacherRequest.getSsn())
+                .username(teacherRequest.getUsername())
+                .birthDay(teacherRequest.getBirthDay())
+                .birthPlace(teacherRequest.getBirthPlace())
+                .password(teacherRequest.getPassword())
+                .phoneNumber(teacherRequest.getPhoneNumber())
+                .email(teacherRequest.getEmail())
+                .isAdvisor(teacherRequest.getIsAdvisorTeacher())
+                .built_in(teacherRequest.getBuiltIn())
+                .gender(teacherRequest.getGender())
+                .build();
+    }
+
 }

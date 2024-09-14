@@ -1,8 +1,11 @@
 package com.dogukan.service.user;
 
+import com.dogukan.contactmessage.messages.Messages;
 import com.dogukan.entity.concretes.user.User;
 import com.dogukan.entity.enums.RoleType;
+import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.mappers.UserMapper;
+import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.messages.SuccessMessages;
 import com.dogukan.payload.request.user.TeacherRequest;
 import com.dogukan.payload.response.ResponseMessage;
@@ -12,6 +15,7 @@ import com.dogukan.repository.user.UserRepository;
 import com.dogukan.service.helper.MethodHelper;
 import com.dogukan.service.validator.UniquePropertyValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -64,5 +68,42 @@ public class TeacherService {
         return userRepository.findByAdvisorTeacherId(teacher.getId())
                 .stream()
                 .map(userMapper::mapUserToStudentResponse).collect(Collectors.toList());
+    }
+
+    //TeacherUpdate:
+    //TODO: Verilen id teachera ait mi onu kontrol edilmesi gerekiyor mu???
+    public ResponseMessage<TeacherResponse> updateTeacherById(TeacherRequest teacherRequest, Long teacherId) {
+
+
+        //TODO:assagida tekrar method olusturdumu kontrol et...
+        //dbden bu idli teacher var mi kontrolü
+        User teacher = methodHelper.isUserExist(teacherId);
+
+        //built_in kontrolü yoptik
+        methodHelper.checkBuiltIn(teacher);
+        //unique bilgiler degistimi kontrolü yapılıyor
+        uniquePropertyValidator.checkUniqueProperties(teacher, teacherRequest);
+
+        //DTO to POJO donusumu
+        User updatedTeacher = userMapper.mapTeacherRequestToUpdatedTeacher(teacherRequest, teacherId);
+
+        //password Encode
+        updatedTeacher.setPassword(passwordEncoder.encode(teacherRequest.getPassword()));
+        //burada role setleme sebebimiz dbde veriyi almadigimiz icin kendimiz yukarida donusum yaptigimiz icin eger role setlemezsek null olarak kayit eder o yuzden setlememiz gerek.Ama dbden cekmis ve updateyi ona gore yapmis olsaydik zaten dbden setlenmis rol gelirdi.
+        updatedTeacher.setUserRole(teacher.getUserRole());
+
+        if (teacherRequest.getIsAdvisorTeacher()) {
+            updatedTeacher.setIsAdvisor(Boolean.TRUE);
+        } else updatedTeacher.setIsAdvisor(Boolean.FALSE);
+
+        User savedTeacher = userRepository.save(updatedTeacher);
+
+
+        return ResponseMessage.<TeacherResponse>builder()
+                .message(SuccessMessages.TEACHER_UPDATE)
+                .httpStatus(HttpStatus.OK)
+                .object(userMapper.mapUserToTeacherResponse(savedTeacher))
+                .build();
+
     }
 }
