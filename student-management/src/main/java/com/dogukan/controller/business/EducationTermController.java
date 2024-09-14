@@ -1,6 +1,7 @@
 package com.dogukan.controller.business;
 
 
+import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.EducationTermResponse;
 import com.dogukan.service.business.EducationTermService;
 import lombok.RequiredArgsConstructor;
@@ -41,5 +42,11 @@ public class EducationTermController {
             @RequestParam(value = "type", defaultValue = "desc") String type
     ) {
         return educationTermService.getAllEducationTermsByPage(page, size, sort, type);
+    }
+
+    @DeleteMapping("/delete/id")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public ResponseMessage<?> deleteEducationTermById(@PathVariable Long id) {
+        return educationTermService.deleteEducationTermById(id);
     }
 }
