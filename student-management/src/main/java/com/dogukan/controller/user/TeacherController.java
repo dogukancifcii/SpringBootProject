@@ -4,6 +4,7 @@ import com.dogukan.payload.request.user.TeacherRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.user.StudentResponse;
 import com.dogukan.payload.response.user.TeacherResponse;
+import com.dogukan.payload.response.user.UserResponse;
 import com.dogukan.service.user.TeacherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +54,7 @@ public class TeacherController {
 
     // Not: ODEVV SaveAdvisorTeacherByTeacherId() ****************************************
 
-    @PatchMapping("/advisorUpdate/{teacherId}")
+    @PatchMapping("/saveAdvisor/{teacherId}")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseMessage<TeacherResponse> saveAdvisorTeacherByTeacherId(
             @PathVariable("teacherId") Long teacherId
@@ -63,5 +64,21 @@ public class TeacherController {
 
     // Not : ODEVV  deleteAdvisorTeacherById() *******************************************
 
+    @PatchMapping("/deleteAdvisor/{teacherId}")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseMessage<TeacherResponse> deleteAdvisorTeacherById(
+            @PathVariable("teacherId") Long teacherId
+    ) {
+        return teacherService.deleteAdvisorTeacherById(teacherId);
+    }
+
     // Not :  getAllAdvisorTeacher() *****************************************************
+
+    @GetMapping("/getAllAdvisorTeacher") //http://localhost:8080/teacher/getAllAdvisorTeacher + GET
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public List<UserResponse> getAllAdvisorTeacher() {
+
+        return teacherService.getAllAdvisorTeacher();
+
+    }
 }

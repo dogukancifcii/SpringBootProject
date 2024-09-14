@@ -11,6 +11,7 @@ import com.dogukan.payload.request.user.TeacherRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.user.StudentResponse;
 import com.dogukan.payload.response.user.TeacherResponse;
+import com.dogukan.payload.response.user.UserResponse;
 import com.dogukan.repository.user.UserRepository;
 import com.dogukan.service.helper.MethodHelper;
 import com.dogukan.service.validator.UniquePropertyValidator;
@@ -122,5 +123,30 @@ public class TeacherService {
                 .object(userMapper.mapUserToTeacherResponse(savedTeacher))
                 .build();
 
+    }
+
+    public ResponseMessage<TeacherResponse> deleteAdvisorTeacherById(Long teacherId) {
+
+        User teacher = methodHelper.isUserExist(teacherId);
+
+        methodHelper.checkBuiltIn(teacher);
+
+        teacher.setIsAdvisor(Boolean.FALSE);
+
+        User savedTeacher = userRepository.save(teacher);
+
+        return ResponseMessage.<TeacherResponse>builder()
+                .message(SuccessMessages.TEACHER_ADVISOR_UPDATED)
+                .httpStatus(HttpStatus.OK)
+                .object(userMapper.mapUserToTeacherResponse(savedTeacher))
+                .build();
+    }
+
+    // Not : getAllAdvisorTeacher() **************************************************************
+    public List<UserResponse> getAllAdvisorTeacher() {
+        return userRepository.findAllByAdvisor(Boolean.TRUE) // JPQL
+                .stream()
+                .map(userMapper::mapUserToUserResponse)
+                .collect(Collectors.toList());
     }
 }
