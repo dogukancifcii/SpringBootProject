@@ -60,4 +60,17 @@ public class StudentService {
         }
         return userRepository.getMaxStudentNumber() + 1;
     }
+
+    public ResponseMessage changeStatusOfStudent(Long studentId, boolean status) {
+        User student = methodHelper.isUserExist(studentId);
+        //role kontrol
+        methodHelper.checkRole(student, RoleType.STUDENT);
+        student.setActive(status);
+        userRepository.save(student);
+
+        return ResponseMessage.builder()
+                .message("Student is " + (status ? "active" : "passive"))
+                .httpStatus(HttpStatus.OK)
+                .build();
+    }
 }
