@@ -2,6 +2,7 @@ package com.dogukan.payload.mappers;
 
 import com.dogukan.entity.concretes.user.User;
 import com.dogukan.payload.request.abstracts.BaseUserRequest;
+import com.dogukan.payload.request.user.StudentRequest;
 import com.dogukan.payload.request.user.TeacherRequest;
 import com.dogukan.payload.request.user.UserRequest;
 import com.dogukan.payload.response.user.StudentResponse;
@@ -128,6 +129,24 @@ public class UserMapper {
                 .isAdvisor(teacherRequest.getIsAdvisorTeacher())
                 .built_in(teacherRequest.getBuiltIn())
                 .gender(teacherRequest.getGender())
+                .build();
+    }
+
+    public User mapStudentRequestToUser(StudentRequest studentRequest){
+        return User.builder()
+                .fatherName(studentRequest.getFatherName())
+                .motherName(studentRequest.getMotherName())
+                .birthDay(studentRequest.getBirthDay())
+                .birthPlace(studentRequest.getBirthPlace())
+                .name(studentRequest.getName())
+                .surname(studentRequest.getSurname())
+                .password(studentRequest.getPassword())
+                .username(studentRequest.getUsername())
+                .ssn(studentRequest.getSsn())
+                .email(studentRequest.getEmail())
+                .phoneNumber(studentRequest.getPhoneNumber())
+                .gender(studentRequest.getGender())
+                .built_in(studentRequest.getBuiltIn())
                 .build();
     }
 
