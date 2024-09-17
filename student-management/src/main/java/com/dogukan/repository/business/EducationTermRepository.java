@@ -1,4 +1,4 @@
-package com.dogukan.repository.user.business;
+package com.dogukan.repository.business;
 
 
 import com.dogukan.entity.concretes.business.EducationTerm;

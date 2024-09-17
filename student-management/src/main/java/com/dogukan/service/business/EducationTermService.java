@@ -10,7 +10,7 @@ import com.dogukan.payload.messages.SuccessMessages;
 import com.dogukan.payload.request.business.EducationTermRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.EducationTermResponse;
-import com.dogukan.repository.user.business.EducationTermRepository;
+import com.dogukan.repository.business.EducationTermRepository;
 import com.dogukan.service.helper.PageableHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
