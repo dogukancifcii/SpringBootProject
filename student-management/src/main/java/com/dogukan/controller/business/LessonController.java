@@ -23,4 +23,16 @@ public class LessonController {
     private ResponseMessage<LessonResponse> saveLesson(@RequestBody @Valid LessonRequest lessonRequest) {
         return lessonService.saveLesson(lessonRequest);
     }
+
+    @DeleteMapping("/delete/{id}")// http://localhost:8080/lessons/delete/2 + DELETE
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public ResponseMessage deleteLesson(@PathVariable Long id) {
+        return lessonService.deleteLesson(id);
+    }
+
+    @GetMapping("/getLessonByName") //http://localhost:8080/getLessonByName?lessonName=java
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public ResponseMessage<LessonResponse> getLessonByLessonName(@RequestParam String lessonName) {
+        return lessonService.getLessonByLessonName(lessonName);
+    }
 }
