@@ -1,6 +1,7 @@
 package com.dogukan.controller.business;
 
 
+import com.dogukan.entity.concretes.business.Lesson;
 import com.dogukan.payload.request.business.LessonRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.LessonResponse;
@@ -11,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/lessons")
@@ -48,5 +50,11 @@ public class LessonController {
         return lessonService.findLessonByPage(page, size, sort, type);
     }
 
-    
+    @GetMapping("/getAllLessonByLessonId")//http://localhost:8080/lesson/getAllLessonByLessonId?lessonId=1,2,3
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public Set<Lesson> getAllLessonByLessonId(@RequestParam(name = "lessonId") Set<Long> idSet) {
+        return lessonService.getLessonByLessonIdSet(idSet);
+    }
+
+    // Not: ODEVVV UpdateById() *************************
 }
