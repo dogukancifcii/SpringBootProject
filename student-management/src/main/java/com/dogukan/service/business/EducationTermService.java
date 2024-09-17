@@ -2,10 +2,12 @@ package com.dogukan.service.business;
 
 
 import com.dogukan.entity.concretes.business.EducationTerm;
+import com.dogukan.exception.BadRequestException;
 import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.mappers.EducationTermMapper;
 import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.messages.SuccessMessages;
+import com.dogukan.payload.request.business.EducationTermRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.EducationTermResponse;
 import com.dogukan.repository.user.business.EducationTermRepository;
@@ -25,6 +27,63 @@ public class EducationTermService {
     private final EducationTermRepository educationTermRepository;
     private final EducationTermMapper educationTermMapper;
     private final PageableHelper pageableHelper;
+
+    public ResponseMessage<EducationTermResponse> saveEducationTerm(EducationTermRequest educationTermRequest){
+        validateEducationTermDates(educationTermRequest);
+        EducationTerm savedEducationTerm =
+                educationTermRepository.save(educationTermMapper.mapEducationTermRequestToEducationTerm(educationTermRequest));
+        return ResponseMessage.<EducationTermResponse>builder()
+                .message(SuccessMessages.EDUCATION_TERM_SAVE)
+                .object(educationTermMapper.mapEducationTermToEducationTermResponse(savedEducationTerm))
+                .httpStatus(HttpStatus.CREATED)
+                .build();
+    }
+
+    private void validateEducationTermDatesForRequest(EducationTermRequest educationTermRequest){
+        // !!! bu metodda amacimiz requestten gelen registrationDate,StartDate ve endDate arasindaki
+        // tarih sirasina gore dogru mu setlenmis onu kontrol etmek
+
+        // registration > start
+        if(educationTermRequest.getLastRegistrationDate().isAfter(educationTermRequest.getStartDate())){
+            throw new ResourceNotFoundException(
+                    ErrorMessages.EDUCATION_START_DATE_IS_EARLIER_THAN_LAST_REGISTRATION_DATE);
+        }
+        // end > start
+        if(educationTermRequest.getEndDate().isBefore(educationTermRequest.getStartDate())){
+            throw new ResourceNotFoundException(
+                    ErrorMessages.EDUCATION_END_DATE_IS_EARLIER_THAN_START_DATE);
+        }
+    }
+
+    // !!! yrd Metod - 3 ********************************************************************
+    private void validateEducationTermDates(EducationTermRequest educationTermRequest){
+
+
+        validateEducationTermDatesForRequest(educationTermRequest); // Yrd Method - 2
+
+        // !!! Bir yil icinde bir tane Guz donemi veya Yaz Donemi olmali kontrolu
+        if(educationTermRepository.existsByTermAndYear( // JPQL
+                educationTermRequest.getTerm(),educationTermRequest.getStartDate().getYear())){
+            throw new ResourceNotFoundException(
+                    ErrorMessages.EDUCATION_TERM_IS_ALREADY_EXIST_BY_TERM_AND_YEAR_MESSAGE);
+        }
+        // !!! yil icine eklencek educationTerm, mevcuttakilerin tarihleri ile cakismamali ****************************
+        if(educationTermRepository.findByYear(educationTermRequest.getStartDate().getYear())
+                .stream()
+                .anyMatch(educationTerm ->
+                        (			educationTerm.getStartDate().equals(educationTermRequest.getStartDate()) //!!! 1. kontrol : baslama tarihleri ayni ise --> et1(10 kasim 2023) / YeniEt(10 kasim 2023)
+                                || (educationTerm.getStartDate().isBefore(educationTermRequest.getStartDate())//!!! 2. kontrol : baslama tarihi mevcuttun baslama ve bitis tarihi ortasinda ise -->
+                                && educationTerm.getEndDate().isAfter(educationTermRequest.getStartDate())) // Ornek : et1 ( baslama 10 kasim 20203 - bitme 20 kasim 20203)  - YeniEt ( baslama 15 kasim 2023 bitme 25 kasim 20203)
+                                || (educationTerm.getStartDate().isBefore(educationTermRequest.getEndDate()) //!!! 3. kontrol bitis tarihi mevcuttun baslama ve bitis tarihi ortasinda ise
+                                && educationTerm.getEndDate().isAfter(educationTermRequest.getEndDate()))// Ornek : et1 ( baslama 10 kasim 20203 - bitme 20 kasim 20203)  - YeniEt ( baslama 09 kasim 2023 bitme 15 kasim 20203)
+                                || (educationTerm.getStartDate().isAfter(educationTermRequest.getStartDate()) //!!!4.kontrol : yeni eklenecek eskiyi tamamen kapsiyorsa
+                                && educationTerm.getEndDate().isBefore(educationTermRequest.getEndDate()))//et1 ( baslama 10 kasim 20203 - bitme 20 kasim 20203)  - YeniEt ( baslama 09 kasim 2023 bitme 25 kasim 20203)
+                        ))
+        ) {
+            throw new BadRequestException(ErrorMessages.EDUCATION_TERM_CONFLICT_MESSAGE);
+        }
+    }
+
 
     public EducationTermResponse getEducationTermResponseById(Long id) {
         EducationTerm educationTerm = isEducationTermExist(id);
@@ -59,6 +118,23 @@ public class EducationTermService {
         return ResponseMessage.builder()
                 .message(SuccessMessages.EDUCATION_TERM_DELETE)
                 .httpStatus(HttpStatus.OK)
+                .build();
+    }
+
+    public ResponseMessage<EducationTermResponse>updateEducationTerm(Long id,EducationTermRequest educationTermRequest){
+        // !!! ıd var mı ???
+        isEducationTermExist(id);
+        // !!! gırılen tarıhler dogru mu ???
+        validateEducationTermDates(educationTermRequest);
+
+        EducationTerm educationTermUpdated =
+                educationTermRepository.save(
+                        educationTermMapper.mapEducationTermRequestToUpdatedEducationTerm(id,educationTermRequest));
+
+        return ResponseMessage.<EducationTermResponse>builder()
+                .message(SuccessMessages.EDUCATION_TERM_UPDATE)
+                .httpStatus(HttpStatus.OK)
+                .object(educationTermMapper.mapEducationTermToEducationTermResponse(educationTermUpdated))
                 .build();
     }
 }

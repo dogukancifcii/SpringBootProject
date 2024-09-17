@@ -1,6 +1,7 @@
 package com.dogukan.controller.business;
 
 
+import com.dogukan.payload.request.business.EducationTermRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.EducationTermResponse;
 import com.dogukan.service.business.EducationTermService;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,11 +21,25 @@ public class EducationTermController {
     private final EducationTermService educationTermService;
 
     // Not: ODEVV save() *********************************************************
+    @PostMapping("/save")// http://localhost:8080/educationTerms/save + JSON + POST
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER')")
+    public ResponseMessage<EducationTermResponse>saveEducationTerm(@RequestBody @Valid
+                                                                   EducationTermRequest educationTermRequest){
+        return educationTermService.saveEducationTerm(educationTermRequest);
+    }
 
     @GetMapping("/{id}") // http://localhost:8080/educationTerm/1 + GET
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','TEACHER')")
     public EducationTermResponse getEducationTermById(@PathVariable Long id) {
         return educationTermService.getEducationTermResponseById(id);
+    }
+
+    // Not: ODEVVV updateById() ***************************************************
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER')")
+    @PutMapping("/update/{id}")// http://localhost:8080/educationTerms/update/1 + JSON
+    public ResponseMessage<EducationTermResponse>updateEducationTerm(@PathVariable Long id,
+                                                                     @RequestBody @Valid EducationTermRequest educationTermRequest ){
+        return educationTermService.updateEducationTerm(id,educationTermRequest);
     }
 
 

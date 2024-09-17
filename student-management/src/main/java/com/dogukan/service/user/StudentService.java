@@ -5,6 +5,7 @@ import com.dogukan.entity.enums.RoleType;
 import com.dogukan.payload.mappers.UserMapper;
 import com.dogukan.payload.messages.SuccessMessages;
 import com.dogukan.payload.request.user.StudentRequest;
+import com.dogukan.payload.request.user.StudentRequestWithoutPassword;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.user.StudentResponse;
 import com.dogukan.repository.user.UserRepository;
@@ -12,8 +13,11 @@ import com.dogukan.service.helper.MethodHelper;
 import com.dogukan.service.validator.UniquePropertyValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Service
 @RequiredArgsConstructor
@@ -70,6 +74,63 @@ public class StudentService {
 
         return ResponseMessage.builder()
                 .message("Student is " + (status ? "active" : "passive"))
+                .httpStatus(HttpStatus.OK)
+                .build();
+    }
+
+    // Not: updateStudentForStudents() **********************************************************
+    public ResponseEntity<String> updateStudent(StudentRequestWithoutPassword studentRequest,
+                                                HttpServletRequest request) {
+
+        String userName = (String) request.getAttribute("username");
+        User student = userRepository.findByUsername(userName);
+
+        // !!! unique kontrolu
+        uniquePropertyValidator.checkUniqueProperties(student, studentRequest);
+
+        student.setMotherName(studentRequest.getMotherName());
+        student.setFatherName(studentRequest.getFatherName());
+        student.setBirthDay(studentRequest.getBirthDay());
+        student.setEmail(studentRequest.getEmail());
+        student.setPhoneNumber(studentRequest.getPhoneNumber());
+        student.setBirthPlace(studentRequest.getBirthPlace());
+        student.setGender(studentRequest.getGender());
+        student.setName(studentRequest.getName());
+        student.setSurname(studentRequest.getSurname());
+        student.setSsn(studentRequest.getSsn());
+
+        userRepository.save(student);
+
+        String message = SuccessMessages.USER_UPDATE;
+
+        return ResponseEntity.ok(message);
+    }
+
+    // Not: updateStudent() **********************************************************
+    public ResponseMessage<StudentResponse> updateStudentForManagers(Long userId,
+                                                                     StudentRequest studentRequest) {
+        User user = methodHelper.isUserExist(userId);
+        // !!! Parametrede gelen id bir student'a ait degilse exception firlatiliyor
+        methodHelper.checkRole(user,RoleType.STUDENT);
+        // !!! unique kontrolu
+        uniquePropertyValidator.checkUniqueProperties(user, studentRequest);
+
+        user.setName(studentRequest.getName());
+        user.setSurname(studentRequest.getSurname());
+        user.setBirthDay(studentRequest.getBirthDay());
+        user.setBirthPlace(studentRequest.getBirthPlace());
+        user.setSsn(studentRequest.getSsn());
+        user.setEmail(studentRequest.getEmail());
+        user.setPhoneNumber(studentRequest.getPhoneNumber());
+        user.setGender(studentRequest.getGender());
+        user.setMotherName(studentRequest.getMotherName());
+        user.setFatherName(studentRequest.getFatherName());
+        user.setPassword(passwordEncoder.encode(studentRequest.getPassword()));
+        user.setAdvisorTeacherId(studentRequest.getAdvisorTeacherId());
+
+        return ResponseMessage.<StudentResponse>builder()
+                .object(userMapper.mapUserToStudentResponse(userRepository.save(user)))
+                .message(SuccessMessages.STUDENT_UPDATE)
                 .httpStatus(HttpStatus.OK)
                 .build();
     }
