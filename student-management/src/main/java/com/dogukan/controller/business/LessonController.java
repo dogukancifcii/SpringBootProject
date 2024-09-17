@@ -6,6 +6,7 @@ import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.LessonResponse;
 import com.dogukan.service.business.LessonService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,9 +31,22 @@ public class LessonController {
         return lessonService.deleteLesson(id);
     }
 
-    @GetMapping("/getLessonByName") //http://localhost:8080/getLessonByName?lessonName=java
+    @GetMapping("/getLessonByName") //http://localhost:8080/lesson/getLessonByName?lessonName=java
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<LessonResponse> getLessonByLessonName(@RequestParam String lessonName) {
         return lessonService.getLessonByLessonName(lessonName);
     }
+
+    @GetMapping("/findLessonByPage")//http://localhost:8080/lesson/findLessonByPage
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public Page<LessonResponse> findLessonByPage(
+            @RequestParam(value = "page") int page,
+            @RequestParam(value = "page") int size,
+            @RequestParam(value = "page") String sort,
+            @RequestParam(value = "page") String type
+    ) {
+        return lessonService.findLessonByPage(page, size, sort, type);
+    }
+
+    
 }

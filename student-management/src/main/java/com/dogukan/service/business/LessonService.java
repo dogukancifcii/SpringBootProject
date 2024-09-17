@@ -10,7 +10,10 @@ import com.dogukan.payload.request.business.LessonRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.LessonResponse;
 import com.dogukan.repository.business.LessonRepository;
+import com.dogukan.service.helper.PageableHelper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,7 @@ public class LessonService {
 
     private final LessonRepository lessonRepository;
     private final LessonMapper lessonMapper;
+    private final PageableHelper pageableHelper;
 
     public ResponseMessage<LessonResponse> saveLesson(LessonRequest lessonRequest) {
         isLessonExistByLessonName(lessonRequest.getLessonName());
@@ -70,5 +74,10 @@ public class LessonService {
                     .message(String.format(ErrorMessages.NOT_FOUND_LESSON_MESSAGE, lessonName))
                     .build();
         }
+    }
+
+    public Page<LessonResponse> findLessonByPage(int page, int size, String sort, String type) {
+        Pageable pageable = pageableHelper.getPageableWithProperties(page, size, sort, type);
+        return lessonRepository.findAll(pageable).map(lessonMapper::mapLessonToLessonResponse);
     }
 }
