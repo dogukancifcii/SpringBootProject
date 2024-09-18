@@ -38,4 +38,10 @@ public class LessonProgramController {
         return lessonProgramService.getLessonProgramById(id);
     }
 
+    @GetMapping("/getAllUnassigned") //http://localhost:8080/lessonPrograms/getAllUnassigned
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public List<LessonProgramResponse> getAllUnassigned() {
+        return lessonProgramService.getAllUnassigned();
+    }
+    
 }

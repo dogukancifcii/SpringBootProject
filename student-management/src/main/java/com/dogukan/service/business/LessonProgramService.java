@@ -70,4 +70,11 @@ public class LessonProgramService {
     private LessonProgram isLessonProgramExist(Long id) {
         return lessonProgramRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format(ErrorMessages.NOT_FOUND_LESSON_MESSAGE)));
     }
+
+    public List<LessonProgramResponse> getAllUnassigned() {
+        return lessonProgramRepository.findByUsers_IdNull()
+                .stream()
+                .map(lessonProgramMapper::mapLessonProgramToLessonProgramResponse)
+                .collect(Collectors.toList());
+    }
 }
