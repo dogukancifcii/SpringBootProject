@@ -29,7 +29,7 @@ public class StudentController {
     // Not: updateStudentForStudents() ***********************************************
     // !!! ogrencinin kendisini update etme islemi
 
-    @PatchMapping("/update")   // http://localhost:8080/user/updateStudent
+    @PatchMapping("/update")   //  // http://localhost:8080/student/update
     @PreAuthorize("hasAnyAuthority('STUDENT')")
     public ResponseEntity<String> updateStudent(@RequestBody @Valid
                                                     StudentRequestWithoutPassword studentRequestWithoutPassword,
@@ -41,7 +41,7 @@ public class StudentController {
     // Not: updateStudent() **********************************************************
 
 
-    @PutMapping("/update/{userId}")   // http://localhost:8080/user/update/2
+    @PutMapping("/update/{userId}")   //  // http://localhost:8080/student/update/2
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<StudentResponse>updateStudentForManagers(
             @PathVariable Long userId,

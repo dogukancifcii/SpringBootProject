@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
@@ -46,6 +47,8 @@ public class LessonProgramController {
         return lessonProgramService.getAllUnassigned();
     }
 
+    // Not : ODEVV getAllLessonProgramAssigned() **************************************************
+
 
     @DeleteMapping("/delete/{id}")//http://localhost:8080/lessonPrograms/delete/2
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
@@ -53,9 +56,18 @@ public class LessonProgramController {
         return lessonProgramService.deleteById(id);
     }
 
-    @GetMapping("/getAllLessonProgramByTeacher")
+    // Not : ( ODEV ) getAllWithPage() ***********************************************************
+
+    @GetMapping("/getAllLessonProgramByTeacher")//http://localhost:8080/lessonPrograms/getAllLessonProgramByTeacher
     @PreAuthorize("hasAnyAuthority('TEACHER')")
-    public Set<LessonProgramResponse> getAllByTeacher(HttpServletRequest httpServletRequest){
-        return lessonProgramService.getAllLessonProgramByUser(httpServletRequest)
+    public Set<LessonProgramResponse> getAllByTeacher(HttpServletRequest httpServletRequest) {
+        return lessonProgramService.getAllLessonProgramByUser(httpServletRequest);
+    }
+
+    @GetMapping("/getAllLessonProgramByStudent")//http://localhost:8080/lessonPrograms/getAllLessonProgramByStudent
+    @PreAuthorize("hasAnyAuthority('STUDENT')")
+    //bir ogrenci kendine ait lessonProgramlari getiriyor.
+    public Set<LessonProgramResponse> getAllByStudent(HttpServletRequest httpServletRequest) {
+        return lessonProgramService.getAllLessonProgramByUser(httpServletRequest);
     }
 }
