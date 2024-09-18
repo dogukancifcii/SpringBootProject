@@ -9,8 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/lessonPrograms")
@@ -49,5 +51,11 @@ public class LessonProgramController {
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage deleteById(@PathVariable Long id) {
         return lessonProgramService.deleteById(id);
+    }
+
+    @GetMapping("/getAllLessonProgramByTeacher")
+    @PreAuthorize("hasAnyAuthority('TEACHER')")
+    public Set<LessonProgramResponse> getAllByTeacher(HttpServletRequest httpServletRequest){
+        return lessonProgramService.getAllLessonProgramByUser(httpServletRequest)
     }
 }

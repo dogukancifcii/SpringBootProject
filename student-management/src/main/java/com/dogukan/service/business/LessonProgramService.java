@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -85,5 +86,14 @@ public class LessonProgramService {
                 .message(SuccessMessages.LESSON_PROGRAM_DELETE)
                 .httpStatus(HttpStatus.OK)
                 .build();
+    }
+
+    public Set<LessonProgramResponse> getAllLessonProgramByUser(HttpServletRequest httpServletRequest) {
+        String userName = (String) httpServletRequest.getAttribute("username");
+
+        return lessonProgramRepository.getLessonProgramByUsersUsername(userName)
+                .stream()
+                .map(lessonProgramMapper::mapLessonProgramToLessonProgramResponse)
+                .collect(Collectors.toSet());
     }
 }
