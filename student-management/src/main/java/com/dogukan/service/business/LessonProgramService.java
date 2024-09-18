@@ -77,4 +77,13 @@ public class LessonProgramService {
                 .map(lessonProgramMapper::mapLessonProgramToLessonProgramResponse)
                 .collect(Collectors.toList());
     }
+
+    public ResponseMessage deleteById(Long id) {
+        isLessonProgramExist(id);
+        lessonProgramRepository.deleteById(id);
+        return ResponseMessage.builder()
+                .message(SuccessMessages.LESSON_PROGRAM_DELETE)
+                .httpStatus(HttpStatus.OK)
+                .build();
+    }
 }

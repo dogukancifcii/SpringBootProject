@@ -43,5 +43,11 @@ public class LessonProgramController {
     public List<LessonProgramResponse> getAllUnassigned() {
         return lessonProgramService.getAllUnassigned();
     }
-    
+
+
+    @DeleteMapping("/delete/{id}")//http://localhost:8080/lessonPrograms/delete/2
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public ResponseMessage deleteById(@PathVariable Long id) {
+        return lessonProgramService.deleteById(id);
+    }
 }
