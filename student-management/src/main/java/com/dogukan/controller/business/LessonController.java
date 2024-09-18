@@ -19,12 +19,13 @@ import java.util.Set;
 @RequestMapping("/lessons")
 @RequiredArgsConstructor
 public class LessonController {
+    //restfullun amaci stateless olmasi oluyor.Statelass olmasini saglamak icin degisken olustururken method seviyesinde tanimlamak gerekiyor.Class seviyesinde tanimlarsak stateless durmunu bozmus oluruz.
 
     private final LessonService lessonService;
 
     @PostMapping("/save") // http://localhost:8080/lessons/save + POST + JSON
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
-    private ResponseMessage<LessonResponse> saveLesson(@RequestBody @Valid LessonRequest lessonRequest) {
+    public ResponseMessage<LessonResponse> saveLesson(@RequestBody @Valid LessonRequest lessonRequest) {
         return lessonService.saveLesson(lessonRequest);
     }
 
@@ -61,7 +62,7 @@ public class LessonController {
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     @PutMapping("/update/{lessonId}") // http://localhost:8080/lessons/update/1
     public ResponseEntity<LessonResponse> updateLessonById(@PathVariable Long lessonId,
-                                                           @RequestBody LessonRequest lessonRequest){
+                                                           @RequestBody LessonRequest lessonRequest) {
         return ResponseEntity.ok(lessonService.updateLessonById(lessonId, lessonRequest));
     }
 }

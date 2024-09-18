@@ -1,13 +1,54 @@
 package com.dogukan.service.business;
 
+import com.dogukan.entity.concretes.business.EducationTerm;
+import com.dogukan.entity.concretes.business.Lesson;
+import com.dogukan.entity.concretes.business.LessonProgram;
+import com.dogukan.exception.ResourceNotFoundException;
+import com.dogukan.payload.mappers.LessonProgramMapper;
+import com.dogukan.payload.messages.ErrorMessages;
+import com.dogukan.payload.messages.SuccessMessages;
+import com.dogukan.payload.request.business.LessonProgramRequest;
+import com.dogukan.payload.response.ResponseMessage;
+import com.dogukan.payload.response.business.LessonProgramResponse;
+import com.dogukan.repository.business.LessonProgramRepository;
 import com.dogukan.repository.business.LessonRepository;
+import com.dogukan.service.validator.DateTimeValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class LessonProgramService {
 
 
-    private final LessonRepository lessonRepository;
+    private final LessonProgramRepository lessonProgramRepository;
+    private final LessonService lessonService;
+    private final EducationTermService educationTermService;
+    private final DateTimeValidator dateTimeValidator;
+    private final LessonProgramMapper lessonProgramMapper;
+
+    public ResponseMessage<LessonProgramResponse> saveLessonProgram(LessonProgramRequest lessonProgramRequest) {
+
+        Set<Lesson> lessons = lessonService.getLessonByLessonIdSet(lessonProgramRequest.getLessonIdList());
+        EducationTerm educationTerm = educationTermService.getEducationTermById(lessonProgramRequest.getEducationTermId());
+
+        if (lessons.isEmpty()) {
+            throw new ResourceNotFoundException(ErrorMessages.NOT_FOUND_LESSON_IN_LIST);
+        }
+        dateTimeValidator.checkTimeWithExeption(lessonProgramRequest.getStartTime(), lessonProgramRequest.getStopTime());
+
+
+        //DTO TO POJO
+        LessonProgram lessonProgram = lessonProgramMapper.mapLessonProgramRequestToLessonProgram(lessonProgramRequest, lessons, educationTerm);
+
+        LessonProgram savedLessonProgram = lessonProgramRepository.save(lessonProgram);
+        return ResponseMessage.<LessonProgramResponse>builder()
+                .message(SuccessMessages.LESSON_PROGRAM_SAVE)
+                .httpStatus(HttpStatus.CREATED)
+                .object(lessonProgramMapper.mapLessonProgramToLessonProgramResponse(savedLessonProgram))
+                .build();
+    }
 }
