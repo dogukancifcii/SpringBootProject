@@ -39,4 +39,6 @@ public class ErrorMessages {
 
     public static final String LESSON_ALREADY_EXIST_WITH_LESSON_NAME = "Lesson with Lesson Name : %s is already exist";
     public static final String NOT_FOUND_LESSON_MESSAGE = "Error: Lesson with this field %s not found";
+
+    public static final String ALREADY_REGISTER_LESSON_MESSAGE = "Error: Lesson with lesson name %s already registered" ;
 }

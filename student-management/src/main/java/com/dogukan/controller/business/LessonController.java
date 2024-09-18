@@ -8,6 +8,7 @@ import com.dogukan.payload.response.business.LessonResponse;
 import com.dogukan.service.business.LessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,4 +58,10 @@ public class LessonController {
     }
 
     // Not: ODEVVV UpdateById() *************************
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    @PutMapping("/update/{lessonId}") // http://localhost:8080/lessons/update/1
+    public ResponseEntity<LessonResponse> updateLessonById(@PathVariable Long lessonId,
+                                                           @RequestBody LessonRequest lessonRequest){
+        return ResponseEntity.ok(lessonService.updateLessonById(lessonId, lessonRequest));
+    }
 }

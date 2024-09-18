@@ -88,4 +88,25 @@ public class LessonService {
         return idSet.stream().map(this::isLessonExistById).collect(Collectors.toSet());
         //map metodunu kullanirken hemen calistirmak gerekiyor.icinde bulundugum classin metodunu instance olusturmadan this ile calistiririz.
     }
+
+    public LessonResponse updateLessonById(Long lessonId, LessonRequest lessonRequest) {
+
+        Lesson lesson = isLessonExistById(lessonId);
+        // !!! requeste ders ismi degisti ise unique olmasi gerekiyor kontrolu
+        if (
+                !(lesson.getLessonName().equals(lessonRequest.getLessonName())) && // requestten gelen ders ismi DB deki ders isminden farkli ise
+                        (lessonRepository.existsByLessonName(lessonRequest.getLessonName())) // Derived Query
+        ) {
+            throw new ConflictException(
+                    String.format(ErrorMessages.ALREADY_REGISTER_LESSON_MESSAGE, lessonRequest.getLessonName()));
+        }
+        // !!! DTO --> POJO
+        Lesson updatedLesson = lessonMapper.mapLessonRequestToUpdatedLesson(lessonId, lessonRequest);
+
+        updatedLesson.setLessonPrograms(lesson.getLessonPrograms());
+
+        Lesson savedLesson = lessonRepository.save(updatedLesson);
+
+        return lessonMapper.mapLessonToLessonResponse(savedLesson);
+    }
 }
