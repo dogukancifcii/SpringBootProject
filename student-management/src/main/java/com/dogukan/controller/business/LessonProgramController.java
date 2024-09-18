@@ -31,4 +31,11 @@ public class LessonProgramController {
     public List<LessonProgramResponse> getAllLessonPrograms() {
         return lessonProgramService.getAllLessonPrograms();
     }
+
+    @GetMapping("/getById/{id}")//http://localhost:8080/lessonPrograms/getById/1
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    public LessonProgramResponse getLessonProgramById(@PathVariable Long id) {
+        return lessonProgramService.getLessonProgramById(id);
+    }
+
 }

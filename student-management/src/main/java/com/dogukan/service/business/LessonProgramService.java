@@ -61,4 +61,13 @@ public class LessonProgramService {
                 .map(lessonProgramMapper::mapLessonProgramToLessonProgramResponse)
                 .collect(Collectors.toList());
     }
+
+    public LessonProgramResponse getLessonProgramById(Long id) {
+        return lessonProgramMapper.mapLessonProgramToLessonProgramResponse(isLessonProgramExist(id));
+
+    }
+
+    private LessonProgram isLessonProgramExist(Long id) {
+        return lessonProgramRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format(ErrorMessages.NOT_FOUND_LESSON_MESSAGE)));
+    }
 }
