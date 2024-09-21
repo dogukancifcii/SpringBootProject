@@ -49,6 +49,11 @@ public class LessonProgramController {
 
     // Not : ODEVV getAllLessonProgramAssigned() **************************************************
 
+    @GetMapping("/getAllAssigned") //http://localhost:8080/lessonPrograms/getAllAssigned
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','TEACHER','STUDENT')")
+    public List<LessonProgramResponse>getAllAssigned(){
+        return lessonProgramService.getAllAssigned();
+    }
 
     @DeleteMapping("/delete/{id}")//http://localhost:8080/lessonPrograms/delete/2
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
