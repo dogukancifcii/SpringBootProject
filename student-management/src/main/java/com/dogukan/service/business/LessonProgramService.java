@@ -12,8 +12,11 @@ import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.LessonProgramResponse;
 import com.dogukan.repository.business.LessonProgramRepository;
 import com.dogukan.repository.business.LessonRepository;
+import com.dogukan.service.helper.PageableHelper;
 import com.dogukan.service.validator.DateTimeValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,7 @@ public class LessonProgramService {
     private final EducationTermService educationTermService;
     private final DateTimeValidator dateTimeValidator;
     private final LessonProgramMapper lessonProgramMapper;
+    private final PageableHelper pageableHelper;
 
     public ResponseMessage<LessonProgramResponse> saveLessonProgram(LessonProgramRequest lessonProgramRequest) {
 
@@ -102,6 +106,12 @@ public class LessonProgramService {
                 .stream()
                 .map(lessonProgramMapper::mapLessonProgramToLessonProgramResponse)
                 .collect(Collectors.toList());
+    }
+
+    public Page<LessonProgramResponse> getAllLessonProgramByPage(int page, int size, String sort, String type){
+        Pageable pageable = pageableHelper.getPageableWithProperties(page,size,sort,type);
+        return lessonProgramRepository.findAll(pageable)
+                .map(lessonProgramMapper::mapLessonProgramToLessonProgramResponse);
     }
 
 

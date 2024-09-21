@@ -6,6 +6,7 @@ import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.LessonProgramResponse;
 import com.dogukan.service.business.LessonProgramService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,6 +63,16 @@ public class LessonProgramController {
     }
 
     // Not : ( ODEV ) getAllWithPage() ***********************************************************
+
+    @GetMapping("/getAllLessonProgramByPage") // http://localhost:8080/lessonPrograms/getAllLessonProgramByPage?page=0&size=1&sort=id&type=desc
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','TEACHER','STUDENT')")
+    public Page<LessonProgramResponse> getAllLessonProgramByPage (
+            @RequestParam(value = "page") int page,
+            @RequestParam(value = "size") int size,
+            @RequestParam(value = "sort") String sort,
+            @RequestParam(value = "type") String type){
+        return lessonProgramService.getAllLessonProgramByPage(page,size,sort,type);
+    }
 
     @GetMapping("/getAllLessonProgramByTeacher")//http://localhost:8080/lessonPrograms/getAllLessonProgramByTeacher
     @PreAuthorize("hasAnyAuthority('TEACHER')")
