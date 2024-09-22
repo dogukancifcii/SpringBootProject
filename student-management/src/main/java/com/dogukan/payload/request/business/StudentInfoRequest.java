@@ -39,5 +39,5 @@ public class StudentInfoRequest {
 
     @NotNull(message = "Please select student")
     private Long studentId;
-    
+
 }

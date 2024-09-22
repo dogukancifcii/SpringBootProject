@@ -1,5 +1,6 @@
 package com.dogukan.controller.business;
 
+import com.dogukan.payload.request.business.StudentInfoRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.StudentInfoResponse;
 import com.dogukan.service.business.StudentInfoService;

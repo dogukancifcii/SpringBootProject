@@ -200,4 +200,8 @@ public class UserService {
     public long countALlAdmins() {
         return userRepository.countAdmin(RoleType.ADMIN);
     }
+
+    public User getTeacherByUsername(String teacherUsername) {
+        return userRepository.findByUsername(teacherUsername);
+    }
 }
