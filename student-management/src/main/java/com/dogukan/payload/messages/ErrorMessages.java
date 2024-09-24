@@ -54,4 +54,6 @@ public class ErrorMessages {
     public static final String LESSON_PROGRAM_ALREADY_EXIST = "Error: Course schedule can not be selected for the same hour and date";
 
     public static final String MEET_HOURS_CONFLICT = "Meet hours has conflict with existing meets";
+
+    public static final String MEET_NOT_FOUND_MESSAGE = "Error: Meet with id : %s not found";
 }

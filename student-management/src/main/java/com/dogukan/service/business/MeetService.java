@@ -3,7 +3,9 @@ package com.dogukan.service.business;
 import com.dogukan.entity.concretes.business.Meet;
 import com.dogukan.entity.concretes.user.User;
 import com.dogukan.entity.enums.RoleType;
+import com.dogukan.exception.BadRequestException;
 import com.dogukan.exception.ConflictException;
+import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.mappers.MeetMaper;
 import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.messages.SuccessMessages;
@@ -17,6 +19,7 @@ import com.dogukan.service.validator.DateTimeValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
@@ -99,4 +102,29 @@ public class MeetService {
 
     }
 
+    public ResponseMessage delete(Long meetId, HttpServletRequest httpServletRequest) {
+        Meet meet = isMeetExistById(meetId);
+        isTeacherControl(meet, httpServletRequest);
+        meetRepository.deleteById(meetId);
+
+        return ResponseMessage.builder()
+                .message(SuccessMessages.MEET_DELETE)
+                .httpStatus(HttpStatus.OK)
+                .build();
+    }
+
+    private Meet isMeetExistById(Long meetId) {
+        return meetRepository.findById(meetId).orElseThrow(() -> new ResourceNotFoundException(String.format(ErrorMessages.MEET_NOT_FOUND_MESSAGE, meetId)));
+    }
+
+    private void isTeacherControl(Meet meet, HttpServletRequest httpServletRequest) {
+        String userName = (String) httpServletRequest.getAttribute("username");
+
+        User teacher = methodHelper.isUserExistByUsername(userName);
+        if (
+                (teacher.getUserRole().getRoleType().equals(RoleType.TEACHER)) && !(meet.getAdvisoryTeacher().getId().equals(teacher.getId()))
+        ) {
+            throw new BadRequestException(ErrorMessages.NOT_PERMITTED_METHOD_MESSAGE);
+        }
+    }
 }
