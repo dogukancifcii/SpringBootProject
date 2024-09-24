@@ -6,10 +6,7 @@ import com.dogukan.payload.response.business.StudentInfoResponse;
 import com.dogukan.service.business.StudentInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -25,5 +22,11 @@ public class StudentInfoController {
     @PreAuthorize("hasAnyAuthority('TEACHER')")
     public ResponseMessage<StudentInfoResponse> saveStudentInfo(HttpServletRequest httpServletRequest, @RequestBody @Valid StudentInfoRequest studentInfoRequest) {
         return studentInfoService.saveStudentInfo(httpServletRequest, studentInfoRequest);
+    }
+
+    @DeleteMapping("/delete/{studentInfoId}")//http://localhost:8080/studentInfo/delete/2 +DELETE
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
+    public ResponseMessage deleteById(@PathVariable Long studentInfoId) {
+        return studentInfoService.deleteById(studentInfoId);
     }
 }

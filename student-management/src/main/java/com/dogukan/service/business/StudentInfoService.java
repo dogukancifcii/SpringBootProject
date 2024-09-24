@@ -7,6 +7,7 @@ import com.dogukan.entity.concretes.user.User;
 import com.dogukan.entity.enums.Note;
 import com.dogukan.entity.enums.RoleType;
 import com.dogukan.exception.ConflictException;
+import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.mappers.StudentInfoMapper;
 import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.messages.SuccessMessages;
@@ -103,5 +104,19 @@ public class StudentInfoService {
         } else {
             return Note.AA;
         }
+    }
+
+    public ResponseMessage deleteById(Long studentInfoId) {
+        isStudentInfoExistById(studentInfoId);
+        studentInfoRepository.deleteById(studentInfoId);
+        return ResponseMessage.builder()
+                .message(SuccessMessages.STUDENT_INFO_DELETE)
+                .httpStatus(HttpStatus.OK)
+                .build();
+
+    }
+
+    public StudentInfo isStudentInfoExistById(Long id) {
+        return studentInfoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format(ErrorMessages.STUDENT_INFO_NOT_FOUND, id)));
     }
 }

@@ -47,4 +47,6 @@ public class ErrorMessages {
     public static final String TIME_NOT_VALID_MESSAGE = "Error: incorrect time";
 
     public static final String NOT_FOUND_LESSON_PROGRAM_MESSAGE = "Error: Lesson Program with this field %s not found";
+
+    public static final String STUDENT_INFO_NOT_FOUND = "Error: Student Info with id : %s not found";
 }
