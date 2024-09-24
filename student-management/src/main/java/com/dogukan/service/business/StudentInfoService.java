@@ -159,4 +159,13 @@ public class StudentInfoService {
                 .findByTeacherId_UsernameEquals(username, pageable)
                 .map(studentInfoMapper::mapStudenInfoToStudentInfoResponse);
     }
+
+    public Page<StudentInfoResponse> getAllForStudent(HttpServletRequest httpServletRequest, int page, int size) {
+        Pageable pageable = pageableHelper.getPageableWithProperties(page, size);
+        String username = (String) httpServletRequest.getAttribute("username");
+
+        return studentInfoRepository
+                .findByStudentId_UsernameEquals(username, pageable)
+                .map(studentInfoMapper::mapStudenInfoToStudentInfoResponse);
+    }
 }

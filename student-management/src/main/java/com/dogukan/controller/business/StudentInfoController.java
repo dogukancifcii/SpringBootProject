@@ -64,5 +64,11 @@ public class StudentInfoController {
 
     @GetMapping("/getAllForStudent")//http://localhost:8080/studentInfo/getAllForStudent?page=0&size=10
     @PreAuthorize("hasAnyAuthority('STUDENT')")
-    public ResponseEntity<Page>
+    public ResponseEntity<Page<StudentInfoResponse>> getAllForStudent(
+            HttpServletRequest httpServletRequest,
+            @RequestParam(value = "page") int page,
+            @RequestParam(value = "size") int size
+    ) {
+        return new ResponseEntity<>(studentInfoService.getAllForStudent(httpServletRequest, page, size), HttpStatus.OK);
+    }
 }
