@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,5 +35,11 @@ public class MeetController {
     @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
     public ResponseMessage delete(@PathVariable Long meetId, HttpServletRequest httpServletRequest) {
         return meetService.delete(meetId, httpServletRequest);
+    }
+
+    @GetMapping("/getAllMeetByStudent")
+    @PreAuthorize("hasAnyAuthority('STUDENT')")
+    public List<MeetResponse> getAllMeetByStudent(HttpServletRequest httpServletRequest){
+        return meetService.getAllMeetByStudent(httpServletRequest);
     }
 }

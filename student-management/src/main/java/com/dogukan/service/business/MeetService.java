@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -126,5 +127,14 @@ public class MeetService {
         ) {
             throw new BadRequestException(ErrorMessages.NOT_PERMITTED_METHOD_MESSAGE);
         }
+    }
+
+    public List<MeetResponse> getAllMeetByStudent(HttpServletRequest httpServletRequest) {
+
+        String userName = (String) httpServletRequest.getAttribute("username");
+        User student = methodHelper.isUserExistByUsername(userName);
+        methodHelper.checkRole(student, RoleType.STUDENT);
+
+        return meetRepository.findByStudentList_IdEquals(student.getId()).stream().map(meetMaper::mapMeetToMeetResponse).collect(Collectors.toList());
     }
 }
