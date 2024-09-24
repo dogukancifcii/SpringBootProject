@@ -4,6 +4,8 @@ package com.dogukan.payload.response.business;
 import com.dogukan.entity.concretes.business.EducationTerm;
 import com.dogukan.entity.concretes.business.Lesson;
 import com.dogukan.entity.enums.Day;
+import com.dogukan.payload.response.user.StudentResponse;
+import com.dogukan.payload.response.user.TeacherResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,5 +28,7 @@ public class LessonProgramResponse {
     private LocalTime stopTime;
     private Set<Lesson> lessonName;
     private EducationTerm educationTerm;
+    private Set<TeacherResponse> teachers;
+    private Set<StudentResponse> students;
     //TODO student ve teacher eklenecek
 }

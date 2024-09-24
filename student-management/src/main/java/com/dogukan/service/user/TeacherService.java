@@ -41,6 +41,7 @@ public class TeacherService {
         //TODO : LessonProgram eklenecek
         Set<LessonProgram> lessonProgramSet =
                 lessonProgramService.getLessonProgramById(teacherRequest.getLessonsIdList());
+
         uniquePropertyValidator.checkDuplicate(
                 teacherRequest.getUsername(),
                 teacherRequest.getSsn(),
@@ -53,6 +54,7 @@ public class TeacherService {
 
         //TODO : Lesson program setlenecek
         teacher.setLessonProgramList(lessonProgramSet);
+
         teacher.setPassword(passwordEncoder.encode(teacherRequest.getPassword()));
         if (teacherRequest.getIsAdvisorTeacher()) {
             teacher.setIsAdvisor(Boolean.TRUE);
@@ -93,6 +95,7 @@ public class TeacherService {
 
         Set<LessonProgram> lessonPrograms =
                 lessonProgramService.getLessonProgramById(teacherRequest.getLessonsIdList());
+        //TODO:confilict kontrolu yani dateTimeValidator kontrolu lazim
 
         //built_in kontrolü yoptik
         methodHelper.checkBuiltIn(teacher);

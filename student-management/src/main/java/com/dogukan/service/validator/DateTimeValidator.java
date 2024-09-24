@@ -29,6 +29,7 @@ public class DateTimeValidator {
         Set<LocalTime> existingLessonProgramStopTimes = new HashSet<>();
         for (LessonProgram lessonProgram : lessonPrograms) {
             String lessonProgramDay = lessonProgram.getDay().name() ;
+
             // !!! Karsilastirilan LessonProgramlar Ayni Gunde ise
             if (uniqueLessonProgramDays.contains(lessonProgramDay)) {
                 // !!! Baslama saatine gore kontrol
