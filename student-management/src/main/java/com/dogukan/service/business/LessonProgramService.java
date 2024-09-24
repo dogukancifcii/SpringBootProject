@@ -3,6 +3,7 @@ package com.dogukan.service.business;
 import com.dogukan.entity.concretes.business.EducationTerm;
 import com.dogukan.entity.concretes.business.Lesson;
 import com.dogukan.entity.concretes.business.LessonProgram;
+import com.dogukan.exception.BadRequestException;
 import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.mappers.LessonProgramMapper;
 import com.dogukan.payload.messages.ErrorMessages;
@@ -101,17 +102,25 @@ public class LessonProgramService {
                 .collect(Collectors.toSet());
     }
 
-    public List<LessonProgramResponse>getAllAssigned(){
+    public List<LessonProgramResponse> getAllAssigned() {
         return lessonProgramRepository.findByUsers_IdNotNull()
                 .stream()
                 .map(lessonProgramMapper::mapLessonProgramToLessonProgramResponse)
                 .collect(Collectors.toList());
     }
 
-    public Page<LessonProgramResponse> getAllLessonProgramByPage(int page, int size, String sort, String type){
-        Pageable pageable = pageableHelper.getPageableWithProperties(page,size,sort,type);
+    public Page<LessonProgramResponse> getAllLessonProgramByPage(int page, int size, String sort, String type) {
+        Pageable pageable = pageableHelper.getPageableWithProperties(page, size, sort, type);
         return lessonProgramRepository.findAll(pageable)
                 .map(lessonProgramMapper::mapLessonProgramToLessonProgramResponse);
+    }
+
+    public Set<LessonProgram> getLessonProgramById(Set<Long> lessonIdSet) {
+        Set<LessonProgram> lessonPrograms = lessonProgramRepository.getLessonProgramByLessonProgramIdList(lessonIdSet); // !!! JPQL
+        if (lessonPrograms.isEmpty()) {
+            throw new BadRequestException(ErrorMessages.NOT_FOUND_LESSON_PROGRAM_MESSAGE_WITHOUT_ID_INFO);
+        }
+        return lessonPrograms;
     }
 
 

@@ -1,5 +1,6 @@
 package com.dogukan.controller.user;
 
+import com.dogukan.payload.request.business.ChooseLessonProgramWithId;
 import com.dogukan.payload.request.user.StudentRequest;
 import com.dogukan.payload.request.user.StudentRequestWithoutPassword;
 import com.dogukan.payload.response.ResponseMessage;
@@ -50,6 +51,15 @@ public class StudentController {
     }
 
     //TODO: LessonProgram ekleem metodu yazilacak
+    // Not: addLessonProgramToStudentLessonsProgram() *************************
+    // !!! Student kendine lessonProgram ekliyor
+    @PreAuthorize("hasAnyAuthority('STUDENT')")
+    @PostMapping("/addLessonProgramToStudent") // http://localhost:8080/student/addLessonProgramToStudent
+    public ResponseMessage<StudentResponse> addLessonProgram(HttpServletRequest request,
+                                                             @RequestBody @Valid ChooseLessonProgramWithId chooseLessonProgramWithId){
+        String userName = (String) request.getAttribute("username");
+        return studentService.addLessonProgramToStudent(userName,chooseLessonProgramWithId);
+    }
 
 
     //normalde degisiklik yaptigimiz icin patch yada put yapariz fakat getlede olur ama okunabilirlik icin patch puth daha onemli

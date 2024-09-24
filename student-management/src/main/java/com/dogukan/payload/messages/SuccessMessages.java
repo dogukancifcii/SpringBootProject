@@ -33,7 +33,7 @@ public class SuccessMessages {
     public static final String LESSON_DELETE = "Lesson is deleted successfully";
 
     public static final String LESSON_PROGRAM_SAVE = "Lesson PROGRAM is Saved";
-    public static final String LESSON_PROGRAM_FOUND = "Lesson PROGRAM is Found Successfully";
+    public static final String LESSON_PROGRAM_ADD_TO_STUDENT = "Lesson Program added to student";
     public static final String LESSON_PROGRAM_DELETE = "Lesson PROGRAM is deleted successfully";
 
     public static final String STUDENT_INFO_SAVE = "StudentInfo is Saved";

@@ -1,10 +1,9 @@
 package com.dogukan.service.user;
 
-import com.dogukan.contactmessage.messages.Messages;
+import com.dogukan.entity.concretes.business.LessonProgram;
 import com.dogukan.entity.concretes.user.User;
 import com.dogukan.entity.enums.RoleType;
 import com.dogukan.exception.ConflictException;
-import com.dogukan.exception.ResourceNotFoundException;
 import com.dogukan.payload.mappers.UserMapper;
 import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.messages.SuccessMessages;
@@ -14,6 +13,7 @@ import com.dogukan.payload.response.user.StudentResponse;
 import com.dogukan.payload.response.user.TeacherResponse;
 import com.dogukan.payload.response.user.UserResponse;
 import com.dogukan.repository.user.UserRepository;
+import com.dogukan.service.business.LessonProgramService;
 import com.dogukan.service.helper.MethodHelper;
 import com.dogukan.service.validator.UniquePropertyValidator;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,9 +35,12 @@ public class TeacherService {
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
     private final MethodHelper methodHelper;
+    private final LessonProgramService lessonProgramService;
 
     public ResponseMessage<TeacherResponse> saveTeacher(TeacherRequest teacherRequest) {
         //TODO : LessonProgram eklenecek
+        Set<LessonProgram> lessonProgramSet =
+                lessonProgramService.getLessonProgramById(teacherRequest.getLessonsIdList());
         uniquePropertyValidator.checkDuplicate(
                 teacherRequest.getUsername(),
                 teacherRequest.getSsn(),
@@ -48,6 +52,7 @@ public class TeacherService {
         teacher.setUserRole(userRoleService.getUserRole(RoleType.TEACHER));
 
         //TODO : Lesson program setlenecek
+        teacher.setLessonProgramList(lessonProgramSet);
         teacher.setPassword(passwordEncoder.encode(teacherRequest.getPassword()));
         if (teacherRequest.getIsAdvisorTeacher()) {
             teacher.setIsAdvisor(Boolean.TRUE);
@@ -82,9 +87,12 @@ public class TeacherService {
         User teacher = methodHelper.isUserExist(teacherId);
 
         // !!! Parametrede gelen id bir teacher a ait degilse exception firlatiliyor
-        methodHelper.checkRole(teacher,RoleType.TEACHER);
+        methodHelper.checkRole(teacher, RoleType.TEACHER);
 
         //!!! TODO: LessonProgramlar getiriliyor
+
+        Set<LessonProgram> lessonPrograms =
+                lessonProgramService.getLessonProgramById(teacherRequest.getLessonsIdList());
 
         //built_in kontrolü yoptik
         methodHelper.checkBuiltIn(teacher);
@@ -98,6 +106,10 @@ public class TeacherService {
         //password Encode
         updatedTeacher.setPassword(passwordEncoder.encode(teacherRequest.getPassword()));
         //burada role setleme sebebimiz dbde veriyi almadigimiz icin kendimiz yukarida donusum yaptigimiz icin eger role setlemezsek null olarak kayit eder o yuzden setlememiz gerek.Ama dbden cekmis ve updateyi ona gore yapmis olsaydik zaten dbden setlenmis rol gelirdi.
+
+        // !!! TODO: LessonProgram sonrasi eklenecek
+        updatedTeacher.setLessonProgramList(lessonPrograms);
+
         updatedTeacher.setUserRole(userRoleService.getUserRole(RoleType.TEACHER));
 
 
@@ -116,10 +128,10 @@ public class TeacherService {
         User teacher = methodHelper.isUserExist(teacherId);
 
         // !!! id ile gelen uer Teacher mi kontrolu
-        methodHelper.checkRole(teacher,RoleType.TEACHER);
+        methodHelper.checkRole(teacher, RoleType.TEACHER);
 
         // !!! id ile gelen teacher zaten advisor mi kontrolu ?
-        if(Boolean.TRUE.equals(teacher.getIsAdvisor())) { // condition : teacher.getIsAdvisor()
+        if (Boolean.TRUE.equals(teacher.getIsAdvisor())) { // condition : teacher.getIsAdvisor()
             throw new ConflictException(
                     String.format(ErrorMessages.ALREADY_EXIST_ADVISOR_MESSAGE, teacherId));
         }
@@ -141,7 +153,7 @@ public class TeacherService {
         User teacher = methodHelper.isUserExist(teacherId);
 
         // !!! id ile gelen user Teacher mi kontrolu
-        methodHelper.checkRole(teacher,RoleType.TEACHER);
+        methodHelper.checkRole(teacher, RoleType.TEACHER);
 
         // !!! id ile gelen teacheradvisor mi kontrolu ?
         methodHelper.checkAdvisor(teacher);
@@ -151,7 +163,7 @@ public class TeacherService {
         User savedTeacher = userRepository.save(teacher);
 
         List<User> allStudents = userRepository.findByAdvisorTeacherId(teacherId);
-        if(!allStudents.isEmpty()) {
+        if (!allStudents.isEmpty()) {
             allStudents.forEach(students -> students.setAdvisorTeacherId(null));
         }
 
