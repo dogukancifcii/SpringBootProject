@@ -1,6 +1,7 @@
 package com.dogukan.controller.business;
 
 import com.dogukan.payload.request.business.StudentInfoRequest;
+import com.dogukan.payload.request.business.UpdateStudentInfoRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.StudentInfoResponse;
 import com.dogukan.service.business.StudentInfoService;
@@ -43,4 +44,9 @@ public class StudentInfoController {
         return studentInfoService.getAllStudentInfoByPage(page, size, sort, type);
     }
 
+    @PutMapping("/update/{studentInfoId}")//http://localhost:8080/studentInfo/update/1 + PUT
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
+    public ResponseMessage<StudentInfoResponse> update(@RequestBody @Valid UpdateStudentInfoRequest studentInfoRequest, @PathVariable Long studentInfoId) {
+        return studentInfoService.update(studentInfoRequest, studentInfoId);
+    }
 }

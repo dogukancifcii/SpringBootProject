@@ -12,6 +12,7 @@ import com.dogukan.payload.mappers.StudentInfoMapper;
 import com.dogukan.payload.messages.ErrorMessages;
 import com.dogukan.payload.messages.SuccessMessages;
 import com.dogukan.payload.request.business.StudentInfoRequest;
+import com.dogukan.payload.request.business.UpdateStudentInfoRequest;
 import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.StudentInfoResponse;
 import com.dogukan.repository.business.StudentInfoRepository;
@@ -128,5 +129,26 @@ public class StudentInfoService {
     public Page<StudentInfoResponse> getAllStudentInfoByPage(int page, int size, String sort, String type) {
         Pageable pageable = pageableHelper.getPageableWithProperties(page, size, sort, type);
         return studentInfoRepository.findAll(pageable).map(studentInfoMapper::mapStudenInfoToStudentInfoRespons);
+    }
+
+    public ResponseMessage<StudentInfoResponse> update(UpdateStudentInfoRequest studentInfoRequest, Long studentInfoId) {
+        Lesson lesson = lessonService.isLessonExistById(studentInfoRequest.getLessonId());
+        EducationTerm educationTerm = educationTermService.getEducationTermById(studentInfoRequest.getEducationTermId());
+        StudentInfo studentInfo = isStudentInfoExistById(studentInfoId);
+        Double notAverage = calculateExamAverage(studentInfoRequest.getMidtermExam(), studentInfoRequest.getFinalExam());
+        Note note = checkLetterGrade(notAverage);
+
+        StudentInfo studentInfoForUpdate = studentInfoMapper.mapUpdateStudentInfoRequestToStudentInfo(studentInfoRequest, studentInfoId, lesson, educationTerm, note, notAverage);
+
+        studentInfoForUpdate.setStudent(studentInfo.getStudent());
+        studentInfoForUpdate.setTeacher(studentInfo.getTeacher());
+        StudentInfo updatedStudentInfo = studentInfoRepository.save(studentInfoForUpdate);
+
+
+        return ResponseMessage.<StudentInfoResponse>builder()
+                .message(SuccessMessages.STUDENT_INFO_UPDATE)
+                .httpStatus(HttpStatus.OK)
+                .object(studentInfoMapper.mapStudenInfoToStudentInfoRespons(updatedStudentInfo))
+                .build();
     }
 }
