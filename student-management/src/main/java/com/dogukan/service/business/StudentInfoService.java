@@ -16,9 +16,12 @@ import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.StudentInfoResponse;
 import com.dogukan.repository.business.StudentInfoRepository;
 import com.dogukan.service.helper.MethodHelper;
+import com.dogukan.service.helper.PageableHelper;
 import com.dogukan.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +39,7 @@ public class StudentInfoService {
     private final LessonService lessonService;
     private final EducationTermService educationTermService;
     private final StudentInfoMapper studentInfoMapper;
+    private final PageableHelper pageableHelper;
 
 
     @Value("${midterm.exam.impact.percentage}")
@@ -108,6 +112,7 @@ public class StudentInfoService {
 
     public ResponseMessage deleteById(Long studentInfoId) {
         isStudentInfoExistById(studentInfoId);
+        //TODO: silen ogretmenin kendi dersine ait studentInfoyu mu siliyor bunun kontrilu yapabilirsin.Dikkat et admin butun student infolari silebilir.Bu yuzden if kontroluyle admin degilse ve teachera ait degilse kontrolu yapip exception firlatma yapilmali.
         studentInfoRepository.deleteById(studentInfoId);
         return ResponseMessage.builder()
                 .message(SuccessMessages.STUDENT_INFO_DELETE)
@@ -118,5 +123,10 @@ public class StudentInfoService {
 
     public StudentInfo isStudentInfoExistById(Long id) {
         return studentInfoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format(ErrorMessages.STUDENT_INFO_NOT_FOUND, id)));
+    }
+
+    public Page<StudentInfoResponse> getAllStudentInfoByPage(int page, int size, String sort, String type) {
+        Pageable pageable = pageableHelper.getPageableWithProperties(page, size, sort, type);
+        return studentInfoRepository.findAll(pageable).map(studentInfoMapper::mapStudenInfoToStudentInfoRespons);
     }
 }
