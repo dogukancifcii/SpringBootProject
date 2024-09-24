@@ -27,7 +27,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 @Service
 @RequiredArgsConstructor
@@ -75,7 +74,7 @@ public class StudentInfoService {
         return ResponseMessage.<StudentInfoResponse>builder()
                 .message(SuccessMessages.STUDENT_INFO_SAVE)
                 .httpStatus(HttpStatus.CREATED)
-                .object(studentInfoMapper.mapStudenInfoToStudentInfoRespons(savedStudentInfo))
+                .object(studentInfoMapper.mapStudenInfoToStudentInfoResponse(savedStudentInfo))
                 .build();
 
     }
@@ -128,7 +127,7 @@ public class StudentInfoService {
 
     public Page<StudentInfoResponse> getAllStudentInfoByPage(int page, int size, String sort, String type) {
         Pageable pageable = pageableHelper.getPageableWithProperties(page, size, sort, type);
-        return studentInfoRepository.findAll(pageable).map(studentInfoMapper::mapStudenInfoToStudentInfoRespons);
+        return studentInfoRepository.findAll(pageable).map(studentInfoMapper::mapStudenInfoToStudentInfoResponse);
     }
 
     public ResponseMessage<StudentInfoResponse> update(UpdateStudentInfoRequest studentInfoRequest, Long studentInfoId) {
@@ -148,7 +147,16 @@ public class StudentInfoService {
         return ResponseMessage.<StudentInfoResponse>builder()
                 .message(SuccessMessages.STUDENT_INFO_UPDATE)
                 .httpStatus(HttpStatus.OK)
-                .object(studentInfoMapper.mapStudenInfoToStudentInfoRespons(updatedStudentInfo))
+                .object(studentInfoMapper.mapStudenInfoToStudentInfoResponse(updatedStudentInfo))
                 .build();
+    }
+
+    public Page<StudentInfoResponse> getAllForTeacher(HttpServletRequest httpServletRequest, int page, int size) {
+        Pageable pageable = pageableHelper.getPageableWithProperties(page, size);
+        String username = (String) httpServletRequest.getAttribute("username");
+
+        return studentInfoRepository
+                .findByTeacherId_UsernameEquals(username, pageable)
+                .map(studentInfoMapper::mapStudenInfoToStudentInfoResponse);
     }
 }

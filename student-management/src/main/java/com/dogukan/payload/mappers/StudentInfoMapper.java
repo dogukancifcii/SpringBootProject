@@ -31,7 +31,7 @@ public class StudentInfoMapper {
                 .build();
     }
 
-    public StudentInfoResponse mapStudenInfoToStudentInfoRespons(
+    public StudentInfoResponse mapStudenInfoToStudentInfoResponse(
             StudentInfo studentInfo
     ) {
         return StudentInfoResponse.builder()

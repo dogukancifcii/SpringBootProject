@@ -7,6 +7,8 @@ import com.dogukan.payload.response.business.StudentInfoResponse;
 import com.dogukan.service.business.StudentInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,4 +51,18 @@ public class StudentInfoController {
     public ResponseMessage<StudentInfoResponse> update(@RequestBody @Valid UpdateStudentInfoRequest studentInfoRequest, @PathVariable Long studentInfoId) {
         return studentInfoService.update(studentInfoRequest, studentInfoId);
     }
+
+    @GetMapping("/getAllForTeacher")//http://localhost:8080/studentInfo/getAllForTeacher?page=0&size=10 +GET
+    @PreAuthorize("hasAnyAuthority('TEACHER')")
+    public ResponseEntity<Page<StudentInfoResponse>> getAllForTeacher(
+            HttpServletRequest httpServletRequest,
+            @RequestParam(value = "page") int page,
+            @RequestParam(value = "size") int size
+    ) {
+        return new ResponseEntity<>(studentInfoService.getAllForTeacher(httpServletRequest, page, size), HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllForStudent")//http://localhost:8080/studentInfo/getAllForStudent?page=0&size=10
+    @PreAuthorize("hasAnyAuthority('STUDENT')")
+    public ResponseEntity<Page>
 }
