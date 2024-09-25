@@ -137,4 +137,11 @@ public class MeetService {
 
         return meetRepository.findByStudentList_IdEquals(student.getId()).stream().map(meetMaper::mapMeetToMeetResponse).collect(Collectors.toList());
     }
+
+    public List<MeetResponse> getAll() {
+        return meetRepository.findAll()
+                .stream()
+                .map(meetMaper::mapMeetToMeetResponse)
+                .collect(Collectors.toList());
+    }
 }

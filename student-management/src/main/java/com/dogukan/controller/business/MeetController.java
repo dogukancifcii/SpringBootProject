@@ -26,6 +26,14 @@ public class MeetController {
     }
 
     // Not: getAll *************************************************************
+
+    @GetMapping("/getAll") //http://localhost:8080/meet/getAll  + GET
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public List<MeetResponse> getAll() {
+        return meetService.getAll();
+    }
+
+
     // Not: getByMeetId ********************************************************
 
     // Not: getAllWithPage *****************************************************
@@ -39,7 +47,7 @@ public class MeetController {
 
     @GetMapping("/getAllMeetByStudent")
     @PreAuthorize("hasAnyAuthority('STUDENT')")
-    public List<MeetResponse> getAllMeetByStudent(HttpServletRequest httpServletRequest){
+    public List<MeetResponse> getAllMeetByStudent(HttpServletRequest httpServletRequest) {
         return meetService.getAllMeetByStudent(httpServletRequest);
     }
 }
