@@ -5,6 +5,7 @@ import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.MeetResponse;
 import com.dogukan.service.business.MeetService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,18 @@ public class MeetController {
 
     // Not: getByMeetId ********************************************************
 
+    @GetMapping("/getByMeetId/{meetId}")//http://localhost:8080/meet/getByMeetId/2
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseMessage<MeetResponse> getByMeetId(@PathVariable Long meetId) {
+        return meetService.getByMeetId(meetId);
+    }
+
     // Not: getAllWithPage *****************************************************
+
+    @GetMapping("/getAllWithPage")//http://localhost:8080/meet/getAllWithPage
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public Page<MeetResponse> getgetAllWithPage
+
     // Not: gettAllByAdvTeacherByPage() ****************************************
 
     @DeleteMapping("/delete/{meetId}")//http://localhost:8080/meet/delete/2 + DELETE

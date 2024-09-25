@@ -144,4 +144,14 @@ public class MeetService {
                 .map(meetMaper::mapMeetToMeetResponse)
                 .collect(Collectors.toList());
     }
+
+    public ResponseMessage<MeetResponse> getByMeetId(Long meetId) {
+        Meet meet = isMeetExistById(meetId);
+        return ResponseMessage.<MeetResponse>builder()
+                .httpStatus(HttpStatus.OK)
+                .message(SuccessMessages.MEET_FOUND)
+                .object(meetMaper.mapMeetToMeetResponse(meet))
+                .build();
+
+    }
 }
