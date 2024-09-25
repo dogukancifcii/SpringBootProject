@@ -14,9 +14,12 @@ import com.dogukan.payload.response.ResponseMessage;
 import com.dogukan.payload.response.business.MeetResponse;
 import com.dogukan.repository.business.MeetRepository;
 import com.dogukan.service.helper.MethodHelper;
+import com.dogukan.service.helper.PageableHelper;
 import com.dogukan.service.user.UserService;
 import com.dogukan.service.validator.DateTimeValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,6 +39,7 @@ public class MeetService {
     private final MethodHelper methodHelper;
     private final DateTimeValidator dateTimeValidator;
     private final MeetMaper meetMaper;
+    private final PageableHelper pageableHelper;
 
     public ResponseMessage<MeetResponse> saveMeet(HttpServletRequest httpServletRequest, MeetRequest meetRequest) {
         String username = (String) httpServletRequest.getAttribute("username");
@@ -152,6 +156,14 @@ public class MeetService {
                 .message(SuccessMessages.MEET_FOUND)
                 .object(meetMaper.mapMeetToMeetResponse(meet))
                 .build();
+
+    }
+
+    public Page<MeetResponse> getgetAllWithPage(int page, int size) {
+        Pageable pageable = pageableHelper.getPageableWithProperties(page, size);
+
+        return meetRepository.findAll(pageable)
+                .map(meetMaper::mapMeetToMeetResponse);
 
     }
 }

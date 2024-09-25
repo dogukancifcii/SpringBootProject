@@ -47,7 +47,12 @@ public class MeetController {
 
     @GetMapping("/getAllWithPage")//http://localhost:8080/meet/getAllWithPage
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public Page<MeetResponse> getgetAllWithPage
+    public Page<MeetResponse> getgetAllWithPage(
+            @RequestParam(value = "page") int page,
+            @RequestParam(value = "size") int size
+    ) {
+        return meetService.getgetAllWithPage(page, size);
+    }
 
     // Not: gettAllByAdvTeacherByPage() ****************************************
 
