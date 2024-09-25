@@ -15,12 +15,14 @@ import com.dogukan.payload.response.business.MeetResponse;
 import com.dogukan.repository.business.MeetRepository;
 import com.dogukan.service.helper.MethodHelper;
 import com.dogukan.service.helper.PageableHelper;
+import com.dogukan.service.user.TeacherService;
 import com.dogukan.service.user.UserService;
 import com.dogukan.service.validator.DateTimeValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
@@ -159,11 +161,21 @@ public class MeetService {
 
     }
 
-    public Page<MeetResponse> getgetAllWithPage(int page, int size) {
+    public Page<MeetResponse> getAllWithPage(int page, int size) {
         Pageable pageable = pageableHelper.getPageableWithProperties(page, size);
 
         return meetRepository.findAll(pageable)
                 .map(meetMaper::mapMeetToMeetResponse);
 
+    }
+
+    public ResponseEntity<Page<MeetResponse>> getAllMeetByTeacher(HttpServletRequest httpServletRequest, int page, int size) {
+        String userName = (String) httpServletRequest.getAttribute("username");
+        User advisoryTeacher = userService.getTeacherByUsername(userName);
+        methodHelper.checkAdvisor(advisoryTeacher);
+
+        Pageable pageable = pageableHelper.getPageableWithProperties(page, size);
+        return ResponseEntity.ok(meetRepository.findByAdvisoryTeacher_IdEquals(advisoryTeacher.getId(), pageable)
+                .map(meetMaper::mapMeetToMeetResponse));
     }
 }
