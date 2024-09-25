@@ -64,7 +64,7 @@ public class TeacherController {
 
     // Not : ODEVV  deleteAdvisorTeacherById() *******************************************
 
-    @PatchMapping("/deleteAdvisorTeacherById/{teacherId}")
+    @DeleteMapping("/deleteAdvisorTeacherById/{teacherId}")
     @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<TeacherResponse> deleteAdvisorTeacherById(
             @PathVariable("teacherId") Long teacherId
