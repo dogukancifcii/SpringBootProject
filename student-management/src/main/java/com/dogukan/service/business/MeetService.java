@@ -43,6 +43,7 @@ public class MeetService {
     private final MeetMaper meetMaper;
     private final PageableHelper pageableHelper;
 
+
     public ResponseMessage<MeetResponse> saveMeet(HttpServletRequest httpServletRequest, MeetRequest meetRequest) {
         String username = (String) httpServletRequest.getAttribute("username");
 
@@ -152,11 +153,10 @@ public class MeetService {
     }
 
     public ResponseMessage<MeetResponse> getByMeetId(Long meetId) {
-        Meet meet = isMeetExistById(meetId);
         return ResponseMessage.<MeetResponse>builder()
                 .httpStatus(HttpStatus.OK)
                 .message(SuccessMessages.MEET_FOUND)
-                .object(meetMaper.mapMeetToMeetResponse(meet))
+                .object(meetMaper.mapMeetToMeetResponse(isMeetExistById(meetId)))
                 .build();
 
     }
@@ -177,5 +177,42 @@ public class MeetService {
         Pageable pageable = pageableHelper.getPageableWithProperties(page, size);
         return ResponseEntity.ok(meetRepository.findByAdvisoryTeacher_IdEquals(advisoryTeacher.getId(), pageable)
                 .map(meetMaper::mapMeetToMeetResponse));
+    }
+
+    public ResponseMessage<MeetResponse> updateMeet(MeetRequest meetRequest, Long meetId, HttpServletRequest httpServletRequest) {
+        Meet meet = isMeetExistById(meetId);
+        isTeacherControl(meet, httpServletRequest);
+        dateTimeValidator.checkTimeWithExeption(meetRequest.getStartTime(), meetRequest.getStopTime());
+
+        if (
+                !(meet.getDate().equals(meetRequest.getDate()) && meet.getStartTime().equals(meetRequest.getStartTime()) &&
+                        meet.getStopTime().equals(meetRequest.getStopTime()))
+        ) {
+            //!!! Student icin cakisma kontrolu
+            for (Long studentId : meetRequest.getStudentIds()) {
+                checkMeetConflict(studentId, meetRequest.getDate(),
+                        meetRequest.getStartTime(), meetRequest.getStopTime());
+            }
+            //!!! Teacher icin cakisma kontrolu
+            checkMeetConflict(meet.getAdvisoryTeacher().getId(),
+                    meetRequest.getDate(),
+                    meetRequest.getStartTime(),
+                    meetRequest.getStopTime());
+        }
+
+        List<User> students = userService.getStudentById(meetRequest.getStudentIds());
+        Meet updatedMeet = meetMaper.mapMeetUpdateRequestToMeet(meetRequest, meetId);
+
+        updatedMeet.setStudentList(students);
+        updatedMeet.setAdvisoryTeacher(meet.getAdvisoryTeacher());
+
+        Meet savedMeet = meetRepository.save(updatedMeet);
+
+        return ResponseMessage.<MeetResponse>builder()
+                .message(SuccessMessages.MEET_UPDATE)
+                .httpStatus(HttpStatus.OK)
+                .object(meetMaper.mapMeetToMeetResponse(savedMeet))
+                .build();
+
     }
 }

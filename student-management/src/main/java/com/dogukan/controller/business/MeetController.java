@@ -72,9 +72,15 @@ public class MeetController {
         return meetService.delete(meetId, httpServletRequest);
     }
 
-    @GetMapping("/getAllMeetByStudent")
+    @GetMapping("/getAllMeetByStudent")//http://localhost:8080/meet/getAllMeetByStudent + GET
     @PreAuthorize("hasAnyAuthority('STUDENT')")
     public List<MeetResponse> getAllMeetByStudent(HttpServletRequest httpServletRequest) {
         return meetService.getAllMeetByStudent(httpServletRequest);
+    }
+
+    @PutMapping("/update/{mmetId}") //http://localhost:8080/meet/update/2 + PUT + JSON
+    @PreAuthorize("hasAnyAuthority('TEACHER','ADMIN')")
+    public ResponseMessage<MeetResponse> updateMeetById(@RequestBody @Valid MeetRequest meetRequest, @PathVariable Long meetId, HttpServletRequest httpServletRequest) {
+        return meetService.updateMeet(meetRequest, meetId, httpServletRequest);
     }
 }

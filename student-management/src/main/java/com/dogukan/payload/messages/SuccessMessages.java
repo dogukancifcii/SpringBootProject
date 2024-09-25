@@ -43,4 +43,5 @@ public class SuccessMessages {
     public static final String MEET_SAVE = "Meet is Saved";
     public static final String MEET_FOUND = "Meet is Found Successfully";
     public static final String MEET_DELETE = "Meet is deleted successfully";
+    public static final String MEET_UPDATE = "Meet is updated successfully";
 }
